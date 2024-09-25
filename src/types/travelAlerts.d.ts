@@ -18,7 +18,7 @@ export interface ITravelAlerts extends IAxiosResponse {
 
 interface ITravelAlert {
 	/** 경보 단계 */
-	alarm_lvl: number;
+	alarm_lvl: number | null;
 	/** 대륙 코드 */
 	continent_cd: number;
 	/** 영문 대륙명 */
@@ -36,9 +36,9 @@ interface ITravelAlert {
 	/** 국기 경로 */
 	flag_download_url: string;
 	/** 지역 유형 */
-	region_ty: string;
+	region_ty: string | null;
 	/** 작성일 */
 	written_dt: string;
 	/** 경보 내용 */
-	remark: string;
+	remark: string | null;
 }

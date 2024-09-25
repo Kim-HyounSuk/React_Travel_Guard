@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 const BannerPage = () => {
 	const { data } = useTravelAlert();
-
+	console.log(data);
 	return <Container>베너</Container>;
 };
 
