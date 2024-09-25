@@ -17,16 +17,22 @@ const Header = () => {
 				<img src={'/image/logo.png'} alt="logo" />
 			</Logo>
 			<NavMenu isVisible={menuOpen}>
-				<NavItem to={'/main'} isActive={location.pathname.startsWith('/main')}>
+				<NavItem
+					onClick={() => setMenuOpen((prev) => !prev)}
+					to={'/main'}
+					isActive={location.pathname.startsWith('/main')}
+				>
 					국가별 정보
 				</NavItem>
 				<NavItem
+					onClick={() => setMenuOpen((prev) => !prev)}
 					to={'/permission'}
 					isActive={location.pathname.startsWith('/permission')}
 				>
 					입국 허가요건 정보
 				</NavItem>
 				<NavItem
+					onClick={() => setMenuOpen((prev) => !prev)}
 					to={'/embassy'}
 					isActive={location.pathname.startsWith('/embassy')}
 				>
@@ -119,6 +125,7 @@ const HambergerMenu = styled.div`
 	display: none;
 	cursor: pointer;
 	font-size: 1.5rem;
+	padding: 0.75rem 0;
 
 	&:hover > svg > path {
 		color: ${({ theme }) => theme.colors.primary};
