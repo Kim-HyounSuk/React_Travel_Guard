@@ -7,7 +7,7 @@ const Footer = () => {
 	const settings = {
 		dots: false,
 		infinite: true,
-		speed: 5000,
+		speed: 6000,
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		autoplay: true,
@@ -35,6 +35,7 @@ export default Footer;
 
 const Container = styled.footer`
 	width: 100%;
+	max-width: ${({ theme }) => theme.layout.maxWidth.desktop};
 	overflow: hidden;
 	position: absolute;
 	background-color: ${({ theme }) => theme.colors.background};

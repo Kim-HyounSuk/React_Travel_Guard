@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import shouldForwardProp from '@emotion/is-prop-valid';
+import { keyframes } from '@emotion/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
@@ -52,14 +53,25 @@ const Header = () => {
 
 export default Header;
 
+const sparkle = keyframes`
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 const Container = styled.header`
 	display: flex;
 	width: 100%;
 	background-color: ${({ theme }) => theme.colors.background};
 	align-items: center;
 	padding: 2rem 1rem;
-	position: fixed;
-	top: 0;
+	position: relative;
 
 	@media (max-width: 768px) {
 		justify-content: center;
@@ -71,6 +83,7 @@ const Logo = styled(Link)`
 	align-items: center;
 	justify-content: center;
 	padding: 0 2rem;
+	transition: opacity 1s ease;
 
 	& > img {
 		width: 100%;
@@ -81,6 +94,10 @@ const Logo = styled(Link)`
 		@media (max-width: 768px) {
 			max-width: 172px;
 		}
+	}
+
+	&:hover > img {
+		animation: ${sparkle} 1s ease-out;
 	}
 `;
 
@@ -111,6 +128,17 @@ const NavItem = styled(Link, {
 	padding: 0.75rem 0;
 	flex: 1;
 	text-align: center;
+
+	&:hover {
+		font-weight: ${({ theme }) => theme.fontWeights.extraBold};
+		border-bottom: 1px solid;
+		border-image: radial-gradient(
+				circle,
+				rgba(127, 169, 255, 1) 0%,
+				rgba(0, 0, 0, 1) 100%
+			)
+			1;
+	}
 
 	${({ isActive, theme }) =>
 		isActive &&

@@ -12,7 +12,13 @@ const client = axios.create({
 });
 
 export const http = {
-	get: function get<T>(url: string, params?: any): Promise<T> {
-		return client.get(url, { params }).then((res) => res.data);
+	get: async function get<T>(url: string, params?: any): Promise<T> {
+		try {
+			const res = await client.get(url, { params });
+			return res.data;
+		} catch (e) {
+			console.error('API 호출 중 에러 발생', e);
+			throw e;
+		}
 	},
 };
