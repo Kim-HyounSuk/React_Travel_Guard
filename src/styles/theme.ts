@@ -31,7 +31,8 @@ const theme = {
 		maxWidth: {
 			mobile: '100%',
 			tablet: '768px',
-			desktop: '1200px',
+			largeTablet: '1024px',
+			desktop: '1920px',
 		},
 		minWidth: {
 			mobile: '320px',

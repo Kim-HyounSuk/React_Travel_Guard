@@ -1,13 +1,13 @@
 import useTravelAlert from '@/api/trevelAlert';
 import styled from '@emotion/styled';
 
-const Main = () => {
+const BannerPage = () => {
 	const { data } = useTravelAlert();
 
-	return <Container>Main 영역</Container>;
+	return <Container>베너</Container>;
 };
 
-export default Main;
+export default BannerPage;
 
 const Container = styled.section`
 	background: ${({ theme }) => theme.gradients.boxGradient};

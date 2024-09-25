@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { Layout } from '@/components/layouts';
-import { Main } from '@/pages';
+import { BannerPage, EmbassyPage, MainPage, PermissionPage } from '@/pages';
 
 const router = createBrowserRouter([
 	{
@@ -9,7 +9,19 @@ const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <Main />,
+				element: <BannerPage />,
+			},
+			{
+				path: 'main/',
+				element: <MainPage />,
+			},
+			{
+				path: 'embassy/',
+				element: <EmbassyPage />,
+			},
+			{
+				path: 'permission/',
+				element: <PermissionPage />,
 			},
 		],
 	},

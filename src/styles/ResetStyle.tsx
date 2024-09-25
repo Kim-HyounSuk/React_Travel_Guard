@@ -118,6 +118,12 @@ const ResetStyle = () => {
 					list-style: none;
 				}
 
+				a {
+					text-decoration: none;
+					color: inherit;
+					cursor: pointer;
+				}
+
 				blockquote,
 				q {
 					quotes: none;

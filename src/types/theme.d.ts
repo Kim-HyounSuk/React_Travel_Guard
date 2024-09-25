@@ -29,6 +29,7 @@ declare module '@emotion/react' {
 			maxWidth: {
 				mobile: string;
 				tablet: string;
+				largeTablet: string;
 				desktop: string;
 			};
 			minWidth: {
