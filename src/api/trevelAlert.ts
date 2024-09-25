@@ -3,8 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import { http } from './base';
 
 const fetchTravelAlert = async (): Promise<ITravelAlerts> =>
-	await http.get('1262000/TravelAlarmService2/getTravelAlarmList2', {
-		numOfRows: 500,
+	await http.get('1262000/TravelAlarmService0404/getTravelAlarm0404List', {
+		perPage: 500,
 	});
 
 const useTravelAlert = () => {

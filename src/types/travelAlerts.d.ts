@@ -39,4 +39,6 @@ interface ITravelAlert {
 	region_ty: string;
 	/** 작성일 */
 	written_dt: string;
+	/** 경보 내용 */
+	remark: string;
 }
