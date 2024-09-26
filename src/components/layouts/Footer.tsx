@@ -37,9 +37,7 @@ const Container = styled.footer`
 	width: 100%;
 	max-width: ${({ theme }) => theme.layout.maxWidth.desktop};
 	overflow: hidden;
-	position: absolute;
 	background-color: ${({ theme }) => theme.colors.background};
-	bottom: 0;
 `;
 
 const CustomSlider = styled(Slider)`

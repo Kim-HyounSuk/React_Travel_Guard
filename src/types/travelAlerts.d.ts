@@ -1,6 +1,4 @@
-import { IAxiosResponse } from './axiosResponse';
-
-export interface ITravelAlerts extends IAxiosResponse {
+export default interface ITravelAlerts {
 	/** 현재 결과 수 */
 	currentCount: number;
 	data: ITravelAlert[];
@@ -16,7 +14,7 @@ export interface ITravelAlerts extends IAxiosResponse {
 	totalCount: number;
 }
 
-interface ITravelAlert {
+export interface ITravelAlert {
 	/** 경보 단계 */
 	alarm_lvl: number | null;
 	/** 대륙 코드 */

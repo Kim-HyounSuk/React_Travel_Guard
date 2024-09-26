@@ -72,6 +72,7 @@ const Container = styled.header`
 	align-items: center;
 	padding: 2rem 1rem;
 	position: relative;
+	z-index: 1;
 
 	@media (max-width: 768px) {
 		justify-content: center;

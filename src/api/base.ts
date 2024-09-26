@@ -23,6 +23,7 @@ export const http = {
 		try {
 			const client = createClient(baseURL);
 			const res = await client.get(url, { params });
+
 			return res.data;
 		} catch (e) {
 			console.error('API 호출 중 에러 발생', e);

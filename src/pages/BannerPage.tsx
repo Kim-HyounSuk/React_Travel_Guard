@@ -1,18 +1,19 @@
-import useTravelAlert from '@/api/trevelAlert';
+import Earth from '@/components/Earth';
 import styled from '@emotion/styled';
 
 const BannerPage = () => {
-	const { data } = useTravelAlert();
-	console.log(data);
-	return <Container>베너</Container>;
+	return (
+		<Container>
+			<Earth />
+		</Container>
+	);
 };
 
 export default BannerPage;
 
-const Container = styled.section`
-	background: ${({ theme }) => theme.gradients.boxGradient};
-	border: 2px solid;
-	border-image: ${({ theme }) => theme.gradients.strokeGradient} 1;
-	width: 400px;
-	height: 400px;
+const Container = styled.div`
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
 `;
