@@ -5,7 +5,7 @@ import { http } from './base';
 const fetchTravelAlerts = async (): Promise<ITravelAlerts> =>
 	await http.get(
 		import.meta.env.VITE_API_BASE_URL,
-		'1262000/TravelAlarmService2/getTravelAlarmList2',
+		'1262000/TravelAlarmService0404/getTravelAlarm0404List',
 		{
 			numOfRows: 500,
 		},

@@ -4,15 +4,15 @@ import { FC } from 'react';
 interface IProps {
 	data: {
 		title: string;
-		description: string;
+		text: string;
 	};
 }
 
-const Title: FC<IProps> = ({ data: { title, description } }) => {
+const Title: FC<IProps> = ({ data: { title, text } }) => {
 	return (
 		<Container>
 			<h2>{title}</h2>
-			<span>{description}</span>
+			<span>{text}</span>
 		</Container>
 	);
 };

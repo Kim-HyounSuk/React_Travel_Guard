@@ -1,13 +1,15 @@
 import styled from '@emotion/styled';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 
 const Layout = () => {
+	const location = useLocation();
+
 	return (
 		<Container>
 			<Header />
-			<OutletWrapper>
+			<OutletWrapper isHome={location.pathname === '/'}>
 				<Outlet />
 			</OutletWrapper>
 			<Footer />
@@ -41,10 +43,11 @@ const Container = styled.div`
 	}
 `;
 
-const OutletWrapper = styled.main`
+const OutletWrapper = styled.main<{ isHome: boolean }>`
 	flex: 1;
 	width: 100%;
 	padding: 0 1rem;
 	overflow: hidden;
-	max-width: 1200px;
+	max-width: ${({ isHome, theme }) =>
+		isHome ? theme.layout.maxWidth.desktop : theme.layout.maxWidth.largeTablet};
 `;

@@ -2,6 +2,7 @@ import { useTravelAlerts, usePermissions } from '@/api';
 import ICombinedData from '@/types/combinedData';
 import { useMemo } from 'react';
 
+/** 위험 경보 API + 국가별 여권정보 API */
 const useCombinedData = () => {
 	const {
 		data: travelAlertData,
