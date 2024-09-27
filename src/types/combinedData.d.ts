@@ -1,6 +1,8 @@
 import { ITravelAlert } from './travelAlerts';
 
 export default interface ICombinedData extends ITravelAlert {
+	/** 위험경보 컬러 */
+	color: string;
 	/** 입국 정보 */
 	entry?: {
 		/** 입국 가능 기간 */
