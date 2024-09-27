@@ -23,10 +23,11 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	padding: 3.75rem 0 3rem 0;
 
 	& > h2 {
-		font-size: 1.25rem;
+		font-size: ${({ theme }) => theme.fontSizes.large};
 		font-weight: ${({ theme }) => theme.fontWeights.bold};
-		padding: 0 0.25rem;
+		padding-bottom: 0.25rem;
 	}
 `;
