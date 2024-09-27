@@ -32,12 +32,18 @@ const useCombinedData = () => {
 			if (!permission) {
 				return {
 					...travelAlert,
+					alarm_lvl: travelAlert.alarm_lvl || 0,
+					region_ty: travelAlert.region_ty || '전체',
+					remark: travelAlert.remark || '전체',
 					color: travelAlertInfo[travelAlert.alarm_lvl || 0].color,
 				};
 			}
 
 			return {
 				...travelAlert,
+				alarm_lvl: travelAlert.alarm_lvl || 0,
+				region_ty: travelAlert.region_ty || '전체',
+				remark: travelAlert.remark || '전체',
 				color: travelAlertInfo[travelAlert.alarm_lvl || 0].color,
 				entry: {
 					entry_period: permission['일반여권소지자-입국가능기간'],
