@@ -1,37 +1,27 @@
+import { useSearchInput } from '@/hooks';
 import styled from '@emotion/styled';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 interface IProps {
 	placeholder: string;
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	onSearch: () => void;
-	value: string;
+	onSearch: (query: string) => void;
 }
 
-const SearchInput: React.FC<IProps> = ({
-	placeholder,
-	onChange,
-	value,
-	onSearch,
-}) => {
-	const handleKeyUp = useCallback(
-		(e: React.KeyboardEvent<HTMLInputElement>) => {
-			if (e.key === 'Enter') {
-				onSearch();
-			}
-		},
-		[onSearch],
-	);
+const SearchInput: React.FC<IProps> = ({ placeholder, onSearch }) => {
+	const { input, handleChnage, handleKeyUp } = useSearchInput({
+		init: '',
+		onSearch,
+	});
 
 	return (
 		<Container>
 			<StyleFontAwesomIcon icon={faMagnifyingGlass} />
 			<input
-				onChange={onChange}
+				onChange={handleChnage}
 				placeholder={placeholder}
-				value={value}
+				value={input}
 				onKeyUp={handleKeyUp}
 			/>
 		</Container>
