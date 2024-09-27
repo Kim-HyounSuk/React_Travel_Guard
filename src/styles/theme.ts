@@ -16,9 +16,10 @@ const theme = {
 			'linear-gradient(135deg, rgba(127, 169, 255, 1) 0%, rgba(0, 0, 0, 1) 100%)',
 	},
 	fontSizes: {
-		small: '12px',
-		medium: '16px',
-		large: '20px',
+		small: '0.75rem',
+		regular: '1.25rem',
+		medium: '1.5rem',
+		large: '2rem',
 	},
 	fontWeights: {
 		light: 300,
