@@ -1,4 +1,5 @@
 import { useTravelAlerts, usePermissions } from '@/api';
+import { travelAlertInfo } from '@/constants';
 import ICombinedData from '@/types/combinedData';
 import { useMemo } from 'react';
 
@@ -34,6 +35,7 @@ const useCombinedData = () => {
 
 			return {
 				...travelAlert,
+				color: travelAlertInfo[travelAlert.alarm_lvl || 0],
 				entry: {
 					entry_period: permission['일반여권소지자-입국가능기간'],
 					entry_status: permission['일반여권소지자-입국가능여부'],
