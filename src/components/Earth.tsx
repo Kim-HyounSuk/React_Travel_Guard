@@ -59,7 +59,10 @@ const Earth = () => {
 	// Polygon과 일치하는 Country의 정보 생성 함수
 	const createCountryInfo = useCallback(
 		(polygon: IGeoJsonFeature | null) => {
-			if (!polygon) return;
+			if (!polygon) {
+				setCountryInfo(null);
+				return;
+			}
 
 			const country = data?.find(
 				(country) =>
