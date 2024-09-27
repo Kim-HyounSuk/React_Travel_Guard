@@ -30,12 +30,15 @@ const useCombinedData = () => {
 			);
 
 			if (!permission) {
-				return { ...travelAlert };
+				return {
+					...travelAlert,
+					color: travelAlertInfo[travelAlert.alarm_lvl || 0].color,
+				};
 			}
 
 			return {
 				...travelAlert,
-				color: travelAlertInfo[travelAlert.alarm_lvl || 0],
+				color: travelAlertInfo[travelAlert.alarm_lvl || 0].color,
 				entry: {
 					entry_period: permission['일반여권소지자-입국가능기간'],
 					entry_status: permission['일반여권소지자-입국가능여부'],
