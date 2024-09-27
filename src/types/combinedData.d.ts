@@ -2,8 +2,8 @@ import { ITravelAlert } from './travelAlerts';
 
 export default interface ICombinedData extends ITravelAlert {
 	alarm_lvl: number;
-	region_ty: number;
-	remark: number;
+	region_ty: string;
+	remark: string;
 	/** 위험경보 컬러 */
 	color: string;
 	/** 입국 정보 */
