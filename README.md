@@ -1,7 +1,1 @@
-# 보일러 플레이트
-
-- Vite
-- React
-- Typescript
-- emotion
-- prettier
+메인 페이지 구현 완료 (반응형 완성)
