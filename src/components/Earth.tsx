@@ -39,9 +39,7 @@ const Earth = () => {
 					country.country_eng_nm === polygon.properties.ADMIN,
 			);
 
-			return country
-				? travelAlertInfo[country.alarm_lvl || 0].color
-				: travelAlertInfo[5].color;
+			return country ? country.color : travelAlertInfo[5].color;
 		},
 		[data],
 	);
@@ -83,8 +81,8 @@ const Earth = () => {
 					name: country.country_nm,
 					id: country.country_iso_alp2,
 					continent: country.continent_nm,
-					region_ty: country.region_ty ? country.region_ty : '전체',
-					alam_lvl: country.alarm_lvl || 0,
+					region_ty: country.region_ty,
+					alam_lvl: country.alarm_lvl,
 					title: travelAlertInfo[country.alarm_lvl || 0].title,
 				});
 			}
