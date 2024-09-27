@@ -42,7 +42,7 @@ const Container = styled(Box)`
 	position: absolute;
 	width: auto;
 	gap: 1rem;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, 50%);
 	width: 250px;
 	z-index: 1;
 
