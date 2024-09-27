@@ -96,9 +96,16 @@ const Earth = () => {
 	// 마우스 Move 이벤트 핸들러
 	const handleMouseMove = useCallback(
 		(e: MouseEvent) => {
+			if (!globeRef.current) return;
 			if (!countryInfo || !hoverPolygon) return;
 			if (countryInfo.id === hoverPolygon.properties.ISO_A2) {
-				setMousePosition({ x: e.clientX, y: e.clientY });
+				const rect = globeRef.current.getBoundingClientRect();
+				const relativeX = e.clientX - rect.left;
+				const relativeY = e.clientY - rect.top;
+
+				if (relativeX >= 0 && relativeY >= 0) {
+					setMousePosition({ x: relativeX, y: relativeY });
+				}
 			}
 		},
 		[countryInfo, hoverPolygon],
