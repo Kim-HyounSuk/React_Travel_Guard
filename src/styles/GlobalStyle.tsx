@@ -34,6 +34,7 @@ const GlobalStyle = () => {
 						'Segoe UI Symbol',
 						sans-serif;
 					color: ${theme.colors.text};
+					font-size: ${theme.fontSizes.regular};
 				}
 				body {
 					background-image: ${theme.gradients.backgroundGradient};

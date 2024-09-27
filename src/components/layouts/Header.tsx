@@ -153,7 +153,7 @@ const NavItem = styled(Link, {
 const HambergerMenu = styled.div`
 	display: none;
 	cursor: pointer;
-	font-size: 1.5rem;
+	font-size: ${({ theme }) => theme.fontSizes.medium};
 	padding: 0.75rem 0;
 
 	&:hover > svg > path {

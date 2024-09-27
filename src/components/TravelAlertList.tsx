@@ -39,7 +39,7 @@ const Container = styled(Box)`
 const Content = styled.div`
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	font-size: 0.75rem;
+	font-size: ${({ theme }) => theme.fontSizes.small};
 `;
 
 const BadgeContent = styled.div`

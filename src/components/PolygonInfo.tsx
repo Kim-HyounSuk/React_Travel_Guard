@@ -61,11 +61,11 @@ const CountryTitle = styled.div`
 	gap: 0.25rem;
 
 	& > span:nth-of-type(1) {
-		font-size: 1.25rem;
 		font-weight: ${({ theme }) => theme.fontWeights.bold};
 	}
+
 	& > span:nth-of-type(2) {
-		font-size: 0.75rem;
+		font-size: ${({ theme }) => theme.fontSizes.small};
 	}
 
 	& > div:nth-of-type(1) {
