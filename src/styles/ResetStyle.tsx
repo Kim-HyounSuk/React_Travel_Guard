@@ -141,6 +141,21 @@ const ResetStyle = () => {
 					border-collapse: collapse;
 					border-spacing: 0;
 				}
+
+				input {
+					all: unset;
+					box-sizing: border-box;
+					display: inline-block;
+					width: 100%;
+					margin: 0;
+					padding: 0;
+					border: none;
+					outline: none;
+					font-family: inherit;
+					font-size: inherit;
+					color: inherit;
+					background: inherit;
+				}
 			`}
 		/>
 	);
