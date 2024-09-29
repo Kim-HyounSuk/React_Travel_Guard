@@ -30,7 +30,8 @@ const theme = {
 	},
 	layout: {
 		maxWidth: {
-			mobile: '100%',
+			mobile: '480px',
+			largeMobile: '600px',
 			tablet: '768px',
 			largeTablet: '1024px',
 			desktop: '1920px',
