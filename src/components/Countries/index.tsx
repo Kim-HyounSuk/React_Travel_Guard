@@ -1,4 +1,4 @@
-import useTabs from '@/hooks/useTabs';
+import { useTabs } from '@/hooks';
 import ICombinedData from '@/types/combinedData';
 import styled from '@emotion/styled';
 import React from 'react';
