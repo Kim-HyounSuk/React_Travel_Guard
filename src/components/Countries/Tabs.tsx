@@ -37,11 +37,19 @@ const Tabs: React.FC<IProps> = ({ tabs, activeTab, onSelectTab }) => {
 export default Tabs;
 
 const Container = styled.div`
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet}) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+		grid-template-columns: repeat(2, 1fr);
+	}
 `;
 
 const Tab = styled(Box)<{ isActive: boolean }>`
-	flex: 1;
 	display: flex;
 	align-items: center;
 	justify-content: center;

@@ -28,4 +28,6 @@ const Container = styled.div`
 	flex: 1;
 	width: 100%;
 	min-height: 0;
+	gap: 1rem;
+	padding: 3rem 0;
 `;

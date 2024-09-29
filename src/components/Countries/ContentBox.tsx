@@ -55,6 +55,22 @@ const Contents = styled.div`
 		border-radius: 2px;
 		background: #f0f0f0;
 	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet}) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeMobile}) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 `;
 
 const NonContents = styled.div`
