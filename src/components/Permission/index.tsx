@@ -2,6 +2,7 @@ import ICombinedData from '@/types/combinedData';
 import styled from '@emotion/styled';
 import React from 'react';
 import { BadgeText, Box } from '@/components/common';
+import { Link } from 'react-router-dom';
 
 interface IProps {
 	data: ICombinedData[];
@@ -20,15 +21,17 @@ const Permission: React.FC<IProps> = ({ data }) => {
 			<Contents>
 				{data.length > 0 ? (
 					data.map((country) => (
-						<Content>
-							<BadgeText isTab={true} color={country.color}>
-								{country.country_nm}
-							</BadgeText>
-							<span>{country.entry?.entry_period}</span>
-							<span>{country.entry?.entry_status}</span>
-							<span>{country.entry?.entry_possession}</span>
-							<span>{country.entry?.entry_ground}</span>
-						</Content>
+						<Link to={'/'}>
+							<Content>
+								<BadgeText isTab={true} color={country.color}>
+									{country.country_nm}
+								</BadgeText>
+								<span>{country.entry?.entry_period}</span>
+								<span>{country.entry?.entry_status}</span>
+								<span>{country.entry?.entry_possession}</span>
+								<span>{country.entry?.entry_ground}</span>
+							</Content>
+						</Link>
 					))
 				) : (
 					<NonContent>조건에 맞는 데이터가 없습니다.</NonContent>
