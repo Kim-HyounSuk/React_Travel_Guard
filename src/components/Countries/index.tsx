@@ -14,7 +14,12 @@ const Countries: React.FC<IProps> = ({ data }) => {
 
 	return (
 		<Container>
-			<Tabs tabs={tabs} activeTab={activeTab} onSelectTab={onSelectTab} />
+			<Tabs
+				tabs={tabs}
+				activeTab={activeTab}
+				onSelectTab={onSelectTab}
+				length={filteredData.length}
+			/>
 			<ContentBox data={filteredData} />
 		</Container>
 	);
