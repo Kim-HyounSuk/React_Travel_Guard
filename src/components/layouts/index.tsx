@@ -33,21 +33,15 @@ const Container = styled.div`
 	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet}) {
 		max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet};
 	}
-
-	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet}) {
-		max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet};
-	}
-
-	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet}) {
-		max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet};
-	}
 `;
 
 const OutletWrapper = styled.main<{ isHome: boolean }>`
+	display: flex;
+	flex-direction: column;
 	flex: 1;
 	width: 100%;
 	padding: 0 1rem;
-	overflow: hidden;
 	max-width: ${({ isHome, theme }) =>
 		isHome ? theme.layout.maxWidth.desktop : theme.layout.maxWidth.largeTablet};
+	min-height: 0;
 `;
