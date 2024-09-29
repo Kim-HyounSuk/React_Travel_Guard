@@ -20,6 +20,12 @@ const PermissionPage = () => {
 	const onSearch = (query: string) => {
 		if (!filtered) return;
 
+		query = query.trim();
+		if (query === '') {
+			setCountries(filtered);
+			return;
+		}
+
 		const lowerQuery = query.toLowerCase();
 
 		const filteredData = filtered.filter(

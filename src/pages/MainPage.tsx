@@ -18,6 +18,12 @@ const MainPage = () => {
 	const onSearch = (query: string) => {
 		if (!data) return;
 
+		query = query.trim();
+		if (query === '') {
+			setCountries(data);
+			return;
+		}
+
 		const lowerQuery = query.toLowerCase();
 
 		const filteredData = data.filter(

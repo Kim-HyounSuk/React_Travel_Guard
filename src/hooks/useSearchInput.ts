@@ -14,7 +14,7 @@ const useSearchInput = ({ init, onSearch }: IUseSearhInput) => {
 
 	const handleKeyUp = useCallback(
 		(e: React.KeyboardEvent<HTMLInputElement>) => {
-			if (e.key === 'Enter' && input.trim()) onSearch(input);
+			if (e.key === 'Enter') onSearch(input);
 		},
 		[input, onSearch],
 	);
