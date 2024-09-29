@@ -1,10 +1,11 @@
 import { SearchInput, Title } from '@/components/common';
+import Countries from '@/components/Countries';
 import ICombinedData from '@/types/combinedData';
 import useCombinedData from '@/utils/useCombinedData';
+import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 
 const MainPage = () => {
-	// 복합 데이터 fetch
 	const { data } = useCombinedData();
 	const [countries, setCountries] = useState<ICombinedData[]>([]);
 
@@ -19,7 +20,7 @@ const MainPage = () => {
 
 		const lowerQuery = query.toLowerCase();
 
-		const filteredData = data?.filter(
+		const filteredData = data.filter(
 			(country) =>
 				country.country_nm.toLowerCase().includes(lowerQuery) ||
 				country.country_eng_nm.toLowerCase().includes(lowerQuery),
@@ -29,7 +30,7 @@ const MainPage = () => {
 	};
 
 	return (
-		<>
+		<Container>
 			<Title
 				data={{
 					title: '국가별 정보',
@@ -37,8 +38,17 @@ const MainPage = () => {
 				}}
 			/>
 			<SearchInput onSearch={onSearch} placeholder={'국가명을 입력하세요.'} />
-		</>
+			<Countries data={countries} />
+		</Container>
 	);
 };
 
 export default MainPage;
+
+const Container = styled.div`
+	width: 100%;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+`;
