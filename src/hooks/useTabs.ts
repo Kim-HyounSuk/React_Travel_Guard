@@ -1,5 +1,5 @@
 import ICombinedData from '@/types/combinedData';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 interface ITab {
 	label: string;
@@ -19,10 +19,16 @@ const tabs: ITab[] = [
 const useTabs = (data: ICombinedData[]) => {
 	const [activeTab, setAtiveTab] = useState<ITab>(tabs[0]);
 
-	const filterdData =
-		activeTab.value === null
-			? data
-			: data.filter((country) => country.alarm_lvl === activeTab.value);
+	const filteredData = useMemo(() => {
+		const filtered =
+			activeTab.value === null
+				? data
+				: data.filter((country) => country.alarm_lvl === activeTab.value);
+
+		return filtered.sort((a, b) =>
+			a.continent_nm.localeCompare(b.country_nm, 'ko-KR'),
+		);
+	}, [activeTab, data]);
 
 	const onSelectTab = (tab: ITab) => {
 		setAtiveTab(tab);
@@ -31,7 +37,7 @@ const useTabs = (data: ICombinedData[]) => {
 	return {
 		activeTab,
 		tabs,
-		filterdData,
+		filteredData,
 		onSelectTab,
 	};
 };
