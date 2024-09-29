@@ -26,13 +26,9 @@ const Container = styled.div`
 	height: 100%;
 	min-width: ${({ theme }) => theme.layout.minWidth.mobile};
 	max-width: ${({ theme }) => theme.layout.maxWidth.desktop};
-	min-height: 100%;
+	min-height: 0;
 	margin: 0 auto;
 	align-items: center;
-
-	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet}) {
-		max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet};
-	}
 `;
 
 const OutletWrapper = styled.main<{ isHome: boolean }>`
