@@ -37,7 +37,7 @@ const Header = () => {
 					to={'/embassy'}
 					isActive={location.pathname.startsWith('/embassy')}
 				>
-					국가별 대사관 정보
+					국가별 재외공관 정보
 				</NavItem>
 			</NavMenu>
 			<HambergerMenu onClick={() => setMenuOpen((prev) => !prev)}>
