@@ -1,4 +1,4 @@
-import { SearchInput, Title } from '@/components/common';
+import { SearchInput, Title, Wrapper } from '@/components/common';
 import Permission from '@/components/Permission';
 import ICombinedData from '@/types/combinedData';
 import useCombinedData from '@/utils/useCombinedData';
@@ -53,10 +53,4 @@ const PermissionPage = () => {
 
 export default PermissionPage;
 
-const Container = styled.div`
-	width: 100%;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	min-height: 0;
-`;
+const Container = styled(Wrapper)``;
