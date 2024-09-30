@@ -11,6 +11,8 @@ export default interface IEmbassies {
 	resultMsg: string;
 	/** 전체 결과 수 */
 	totalCount: number;
+	/** 결과 데이터 */
+	data: IEmbassy[];
 }
 
 export interface IEmbassy {
