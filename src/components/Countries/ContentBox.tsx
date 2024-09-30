@@ -37,8 +37,7 @@ const Container = styled(Box)`
 	gap: 1rem;
 	width: 100%;
 	font-size: ${({ theme }) => theme.fontSizes.regular};
-
-	padding: 1rem 0 1rem 1rem;
+	padding: 1rem;
 	min-height: 0;
 `;
 
@@ -47,14 +46,6 @@ const Contents = styled.div`
 	grid-template-columns: repeat(5, 1fr);
 	width: 100%;
 	gap: 1rem;
-	overflow-y: auto;
-	&::-webkit-scrollbar {
-		width: 4px;
-	}
-	&::-webkit-scrollbar-thumb {
-		border-radius: 2px;
-		background: #f0f0f0;
-	}
 
 	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet}) {
 		grid-template-columns: repeat(4, 1fr);
