@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '@/components/layouts';
 import { BannerPage, EmbassyPage, MainPage, PermissionPage } from '@/pages';
+import DetailPage from './pages/DetailPage';
 
 const router = createBrowserRouter([
 	{
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
 			{
 				path: 'permission/',
 				element: <PermissionPage />,
+			},
+			{
+				path: 'detail/:iso',
+				element: <DetailPage />,
 			},
 		],
 	},
