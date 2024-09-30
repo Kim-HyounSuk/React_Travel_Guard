@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { http } from './base';
-import IEmbassies from '@/types/embassy';
+import IEmbassies from '@/types/embassies';
 
 const fetchEmbassies = async (): Promise<IEmbassies> =>
 	await http.get(
