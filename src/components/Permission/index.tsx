@@ -50,6 +50,8 @@ const Container = styled(Box)`
 	width: 100%;
 	min-height: 0;
 	margin: 3rem 0;
+	position: relative;
+	padding: 0;
 
 	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
 		padding: 0.5rem;
@@ -60,8 +62,11 @@ const Title = styled.div`
 	display: flex;
 	align-items: center;
 	font-size: ${({ theme }) => theme.fontSizes.medium};
-	padding: 0 0 1rem 0;
+	padding: 1rem;
 	border-bottom: 1px solid ${({ theme }) => theme.colors.primary};
+	position: sticky;
+	top: 0;
+	background: ${({ theme }) => theme.gradients.boxGradient};
 
 	& > span {
 		flex: 1;
@@ -92,15 +97,7 @@ const Contents = styled.div`
 	padding-top: 1rem;
 	width: 100%;
 	gap: 1rem;
-	overflow: auto;
-
-	&::-webkit-scrollbar {
-		width: 4px;
-	}
-	&::-webkit-scrollbar-thumb {
-		border-radius: 2px;
-		background: #f0f0f0;
-	}
+	padding: 1rem;
 `;
 const Content = styled.div`
 	display: flex;
