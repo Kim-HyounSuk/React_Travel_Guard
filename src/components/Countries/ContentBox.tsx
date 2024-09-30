@@ -41,7 +41,14 @@ const Container = styled(Box)`
 	width: 100%;
 	font-size: ${({ theme }) => theme.fontSizes.regular};
 	padding: 1rem;
-	min-height: 0;
+	overflow-y: auto;
+	&::-webkit-scrollbar {
+		width: 4px;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 2px;
+		background: ${({ theme }) => theme.colors.primary};
+	}
 `;
 
 const Contents = styled.div`

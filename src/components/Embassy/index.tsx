@@ -27,6 +27,14 @@ const Container = styled(Box)`
 	padding: 0 1rem;
 	width: 100%;
 	height: 100%;
+	overflow-y: auto;
+	&::-webkit-scrollbar {
+		width: 4px;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 2px;
+		background: ${({ theme }) => theme.colors.primary};
+	}
 `;
 
 const NonContent = styled.div`
