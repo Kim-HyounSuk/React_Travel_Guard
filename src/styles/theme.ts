@@ -10,7 +10,7 @@ const theme = {
 			'linear-gradient(180deg, rgba(10, 3, 58, 1) 0%, rgba(4, 0, 25, 1) 43%)',
 		boxGradient: `
       radial-gradient(at top left, rgba(127, 169, 255, 0.2) 0%, rgba(0, 0, 0, 0)) 100%,
-      rgba(8, 8, 8, 0.8)
+      rgba(8, 8, 8, 1)
     `,
 		strokeGradient:
 			'linear-gradient(135deg, rgba(127, 169, 255, 1) 0%, rgba(0, 0, 0, 1) 100%)',
