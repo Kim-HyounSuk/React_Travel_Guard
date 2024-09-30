@@ -14,7 +14,10 @@ const ContentBox: React.FC<IProps> = ({ data }) => {
 			{data.length > 0 ? (
 				<Contents>
 					{data.map((country, idx) => (
-						<Link key={idx} to={'/'}>
+						<Link
+							key={idx}
+							to={`/detail/${country.country_iso_alp2.toLowerCase()}`}
+						>
 							<BadgeText isTab={false} color={country.color}>
 								{country.country_nm}
 							</BadgeText>
