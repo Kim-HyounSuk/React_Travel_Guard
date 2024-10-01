@@ -45,7 +45,7 @@ const Container = styled.div`
 		grid-template-columns: repeat(3, 1fr);
 	}
 
-	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeMobile}) {
 		grid-template-columns: repeat(2, 1fr);
 	}
 `;

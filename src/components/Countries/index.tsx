@@ -35,4 +35,20 @@ const Container = styled.div`
 	min-height: 0;
 	gap: 1rem;
 	padding: 3rem 0;
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet}) {
+		padding: 2.5rem 0;
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
+		padding: 2rem 0;
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeMobile}) {
+		padding: 1.5rem 0;
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+		padding: 1rem 0;
+	}
 `;
