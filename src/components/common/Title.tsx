@@ -24,10 +24,27 @@ const Container = styled.div`
 	flex-direction: column;
 	width: 100%;
 	padding: 3.75rem 0 3rem 0;
+	font-size: ${({ theme }) => theme.fontSizes.medium};
 
 	& > h2 {
 		font-size: ${({ theme }) => theme.fontSizes.large};
 		font-weight: ${({ theme }) => theme.fontWeights.bold};
 		padding-bottom: 0.25rem;
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
+		font-size: ${({ theme }) => theme.fontSizes.regular};
+
+		& > h2 {
+			font-size: ${({ theme }) => theme.fontSizes.medium};
+		}
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+		font-size: ${({ theme }) => theme.fontSizes.small};
+
+		& > h2 {
+			font-size: ${({ theme }) => theme.fontSizes.regular};
+		}
 	}
 `;
