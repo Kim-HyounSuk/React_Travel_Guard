@@ -35,6 +35,22 @@ const Container = styled(Box)`
 		border-radius: 2px;
 		background: ${({ theme }) => theme.colors.primary};
 	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet}) {
+		margin: 2.5rem 0;
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
+		margin: 2rem 0;
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeMobile}) {
+		margin: 1.5rem 0;
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+		margin: 1rem 0;
+	}
 `;
 
 const NonContent = styled.div`
