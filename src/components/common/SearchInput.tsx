@@ -48,9 +48,22 @@ const Container = styled.div`
 		border: 2px solid;
 		border-image: ${({ theme }) => theme.gradients.strokeGradient} 1;
 	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
+		padding: 0.5rem 0.75rem;
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+		padding: 0.25rem 0.5rem;
+	}
 `;
 
 const StyleFontAwesomIcon = styled(FontAwesomeIcon)`
 	font-size: ${({ theme }) => theme.fontSizes.medium};
 	padding: 0.75rem;
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
+		padding: 0.5rem;
+		font-size: ${({ theme }) => theme.fontSizes.regular};
+	}
 `;
