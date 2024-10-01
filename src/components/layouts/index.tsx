@@ -12,6 +12,7 @@ const Layout = () => {
 			<OutletWrapper isHome={location.pathname === '/'}>
 				<Outlet />
 			</OutletWrapper>
+			<Footer />
 		</Container>
 	);
 };
