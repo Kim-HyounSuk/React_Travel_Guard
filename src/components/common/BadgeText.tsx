@@ -12,7 +12,7 @@ const BadgeText: React.FC<IProps> = ({ isTab = false, children, color }) => {
 	return (
 		<Container>
 			<Badge color={color} isTab={isTab} />
-			<span>{children}</span>
+			<Text>{children}</Text>
 		</Container>
 	);
 };
@@ -24,4 +24,9 @@ const Container = styled.div`
 	align-items: center;
 	gap: 0.5rem;
 	min-width: 125px;
+	color: inherit;
+`;
+
+const Text = styled.span`
+	color: inherit;
 `;
