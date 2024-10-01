@@ -54,7 +54,9 @@ const useCombinedData = () => {
 			};
 		});
 
-		return data;
+		return data.sort((a, b) =>
+			a.country_nm.localeCompare(b.country_nm, 'ko-KR'),
+		);
 	}, [travelAlertData, permissionData]);
 
 	const isError = travelAlertError || permissionError;

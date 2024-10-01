@@ -24,9 +24,7 @@ const useTabs = (data: ICombinedData[]) => {
 				? data
 				: data.filter((country) => country.alarm_lvl === activeTab.value);
 
-		return filtered.sort((a, b) =>
-			a.continent_nm.localeCompare(b.country_nm, 'ko-KR'),
-		);
+		return filtered;
 	}, [activeTab, data]);
 
 	const onSelectTab = (tab: ITab) => {
