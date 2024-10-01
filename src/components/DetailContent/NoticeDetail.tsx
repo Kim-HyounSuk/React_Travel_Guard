@@ -58,7 +58,8 @@ const Title = styled.div`
 
 const Content = styled.div`
 	min-height: 0;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	min-height: 100%;
 	&::-webkit-scrollbar {
 		width: 4px;
@@ -68,8 +69,12 @@ const Content = styled.div`
 		background: ${({ theme }) => theme.colors.primary};
 	}
 
-	& p span {
+	& p,
+	& span,
+	& div {
 		font-size: ${({ theme }) => theme.fontSizes.regular} !important;
+		color: ${({ theme }) => theme.colors.text} !important;
+		text-align: left !important;
 	}
 
 	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
