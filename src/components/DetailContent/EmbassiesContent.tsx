@@ -59,6 +59,7 @@ const Title = styled(Box)`
 	justify-content: space-between;
 	align-items: center;
 	cursor: pointer;
+	font-weight: ${({ theme }) => theme.fontWeights.bold};
 `;
 
 const ContentBox = styled.div`

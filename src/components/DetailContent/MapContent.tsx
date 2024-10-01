@@ -1,15 +1,21 @@
 import ICombinedData from '@/types/combinedData';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useState } from 'react';
 import { Box } from '@/components/common';
+import MapDetail from './MapDetail';
 
 interface IProps {
 	country: ICombinedData;
 }
 
 const Map: React.FC<IProps> = ({ country }) => {
+	const [isModal, setIsModal] = useState<string | null>(null);
+
 	return (
-		<Container>
+		<Container onClick={() => setIsModal(country.dang_map_download_url)}>
+			{isModal && (
+				<MapDetail onClose={() => setIsModal(null)} imgURL={isModal} />
+			)}
 			<Image
 				src={country.dang_map_download_url}
 				alt={`${country.country_nm}_map`}

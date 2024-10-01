@@ -1,20 +1,26 @@
 import styled from '@emotion/styled';
 import { Box } from '@/components/common';
 import { INotice } from '@/types/notices';
-import React from 'react';
+import React, { useState } from 'react';
+import NoticeDetail from './NoticeDetail';
 
 interface IProps {
 	notices: INotice[];
 }
 
 const Notice: React.FC<IProps> = ({ notices }) => {
+	const [isModal, setIsModal] = useState<INotice | null>(null);
+
 	return (
 		<Container>
+			{isModal && (
+				<NoticeDetail notice={isModal} onClose={() => setIsModal(null)} />
+			)}
 			<Title>안전공지</Title>
-			{notices.length > 0 ? (
+			{notices && notices.length > 0 ? (
 				<Contents>
 					{notices.map((notice, idx) => (
-						<Item key={idx}>
+						<Item onClick={() => setIsModal(notice)} key={idx}>
 							<span>{notice.title}</span>
 							<span>{notice.wrt_dt}</span>
 						</Item>

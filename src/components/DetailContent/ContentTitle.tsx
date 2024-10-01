@@ -42,10 +42,20 @@ const ContentTitle = styled.div`
 		font-size: ${({ theme }) => theme.fontSizes.large};
 		font-weight: ${({ theme }) => theme.fontWeights.bold};
 	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+		& > h2 {
+			font-size: ${({ theme }) => theme.fontSizes.regular};
+		}
+
+		& > span {
+			font-size: ${({ theme }) => theme.fontSizes.small};
+		}
+	}
 `;
 
 const Image = styled.div`
-	width: 172px;
+	width: 150px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -57,6 +67,10 @@ const Image = styled.div`
 	}
 
 	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
-		width: 120px;
+		width: 100px;
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+		width: 50px;
 	}
 `;
