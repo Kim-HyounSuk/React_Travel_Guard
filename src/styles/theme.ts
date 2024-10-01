@@ -7,7 +7,7 @@ const theme = {
 	},
 	gradients: {
 		backgroundGradient:
-			'linear-gradient(180deg, rgba(10, 3, 58, 1) 0%, rgba(4, 0, 25, 1) 43%)',
+			'linear-gradient(180deg, rgba(0, 0, 5, 1) 0%, rgba(0, 0, 0, 1) 43%)',
 		boxGradient: `
       radial-gradient(at top left, rgba(127, 169, 255, 0.2) 0%, rgba(0, 0, 0, 0)) 100%,
       rgba(8, 8, 8, 1)
