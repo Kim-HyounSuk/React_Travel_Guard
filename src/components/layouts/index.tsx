@@ -12,7 +12,6 @@ const Layout = () => {
 			<OutletWrapper isHome={location.pathname === '/'}>
 				<Outlet />
 			</OutletWrapper>
-			<Footer />
 		</Container>
 	);
 };
@@ -36,7 +35,7 @@ const OutletWrapper = styled.main<{ isHome: boolean }>`
 	flex-direction: column;
 	flex: 1;
 	width: 100%;
-	padding: 0 1rem;
+	padding: ${({ isHome }) => (isHome ? '0' : '0 1rem')};
 	max-width: ${({ isHome, theme }) =>
 		isHome ? theme.layout.maxWidth.desktop : theme.layout.maxWidth.largeTablet};
 	min-height: 0;
