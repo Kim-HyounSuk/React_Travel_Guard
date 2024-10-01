@@ -26,7 +26,11 @@ const Tabs: React.FC<IProps> = ({ tabs, activeTab, onSelectTab, length }) => {
 						</BadgeText>
 					</Tab>
 				) : (
-					<Tab onClick={() => onSelectTab(tab)} isActive={activeTab === tab}>
+					<Tab
+						key={'전체'}
+						onClick={() => onSelectTab(tab)}
+						isActive={activeTab === tab}
+					>
 						전체{activeTab === tab ? `(${length})` : ''}
 					</Tab>
 				),
@@ -57,4 +61,8 @@ const Tab = styled(Box)<{ isActive: boolean }>`
 	font-size: ${({ theme }) => theme.fontSizes.small};
 	cursor: pointer;
 	opacity: ${({ isActive }) => (isActive ? '1' : '0.5')};
+
+	&:hover {
+		opacity: 1;
+	}
 `;
