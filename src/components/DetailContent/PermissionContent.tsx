@@ -53,6 +53,7 @@ const ItemRow = styled.div`
 
 const Label = styled.span`
 	color: ${({ theme }) => theme.colors.primary};
+	font-weight: ${({ theme }) => theme.fontWeights.medium};
 `;
 
 const Text = styled.span`

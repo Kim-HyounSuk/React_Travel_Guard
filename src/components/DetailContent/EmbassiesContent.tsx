@@ -76,11 +76,12 @@ const Content = styled(Box)`
 
 const ContentLabel = styled.span`
 	color: ${({ theme }) => theme.colors.primary};
-	font-weight: ${({ theme }) => theme.fontWeights.bold};
+	font-weight: ${({ theme }) => theme.fontWeights.medium};
 `;
 
 const ContentItem = styled.span`
 	text-align: right;
+	font-size: ${({ theme }) => theme.fontSizes.small};
 `;
 
 const NonItem = styled(Box)`

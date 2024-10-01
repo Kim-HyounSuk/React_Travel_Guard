@@ -16,9 +16,7 @@ const NoticeDetail: React.FC<IProps> = ({ notice, onClose }) => {
 				<span>{notice.wrt_dt}</span>
 			</Title>
 			<Container>
-				<Content
-					dangerouslySetInnerHTML={{ __html: notice.txt_origin_cn }}
-				></Content>
+				<Content dangerouslySetInnerHTML={{ __html: notice.txt_origin_cn }} />
 			</Container>
 		</Modal>
 	);
@@ -49,17 +47,34 @@ const Title = styled.div`
 	& > span:nth-of-type(2) {
 		font-size: ${({ theme }) => theme.fontSizes.small};
 	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+		& > span:nth-of-type(1) {
+			font-weight: ${({ theme }) => theme.fontWeights.medium};
+			font-size: ${({ theme }) => theme.fontSizes.regular};
+		}
+	}
 `;
 
 const Content = styled.div`
 	min-height: 0;
 	overflow: auto;
-	height: 100%;
+	min-height: 100%;
 	&::-webkit-scrollbar {
 		width: 4px;
 	}
 	&::-webkit-scrollbar-thumb {
 		border-radius: 2px;
 		background: ${({ theme }) => theme.colors.primary};
+	}
+
+	& p span {
+		font-size: ${({ theme }) => theme.fontSizes.regular} !important;
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+		& p span {
+			font-size: ${({ theme }) => theme.fontSizes.small} !important;
+		}
 	}
 `;

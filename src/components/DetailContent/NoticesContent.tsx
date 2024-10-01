@@ -44,7 +44,7 @@ const Container = styled(Box)`
 
 const Title = styled.div`
 	font-weight: ${({ theme }) => theme.fontWeights.bold};
-	padding: 1rem 0;
+	padding-bottom: 1rem;
 	border-bottom: 1px solid ${({ theme }) => theme.colors.primary};
 `;
 
@@ -77,4 +77,5 @@ const NonItem = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: 1rem;
 `;
