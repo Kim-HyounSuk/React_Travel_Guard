@@ -30,7 +30,7 @@ export default TravelAlertList;
 
 const Container = styled(Box)`
 	left: 1rem;
-	bottom: 1rem;
+	bottom: 1.5rem;
 	width: auto;
 	position: absolute;
 	display: grid;
