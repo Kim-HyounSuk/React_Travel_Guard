@@ -78,7 +78,7 @@ const Container = styled.header`
 	position: relative;
 	z-index: 2;
 
-	@media (max-width: 768px) {
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
 		justify-content: center;
 	}
 `;
@@ -96,7 +96,7 @@ const Logo = styled(Link)`
 		object-fit: cover;
 		max-width: 310px;
 
-		@media (max-width: 768px) {
+		@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
 			max-width: 172px;
 		}
 	}
@@ -107,23 +107,25 @@ const Logo = styled(Link)`
 `;
 
 const NavMenu = styled.nav<{ isVisible: boolean }>`
-	display: ${({ isVisible }) => (isVisible ? 'flex' : 'none')};
+	display: flex;
 	width: 100%;
 	gap: 0.75rem;
-	position: absolute;
 	left: 0;
 	top: 100%;
 	width: 100%;
-	flex-direction: column;
 	background-color: ${({ theme }) => theme.colors.background};
-	padding: 0 1rem 1rem 1rem;
+	max-width: 708px;
+	font-size: ${({ theme }) => theme.fontSizes.medium};
 
-	@media (min-width: 769px) {
-		display: flex;
-		flex-direction: row;
-		position: static;
-		max-width: 708px;
-		padding: 0;
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet}) {
+		font-size: ${({ theme }) => theme.fontSizes.regular};
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
+		flex-direction: column;
+		display: ${({ isVisible }) => (isVisible ? 'flex' : 'none')};
+		position: absolute;
+		padding: 0 1rem 1rem 1rem;
 	}
 `;
 
@@ -164,7 +166,7 @@ const HambergerMenu = styled.div`
 		color: ${({ theme }) => theme.colors.primary};
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
 		display: block;
 		position: absolute;
 		right: 1rem;
