@@ -2,7 +2,7 @@
 
 import styled from '@emotion/styled';
 import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import shouldForwardProp from '@emotion/is-prop-valid';
 import { keyframes } from '@emotion/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,6 +11,10 @@ import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 const Header = () => {
 	const location = useLocation();
 	const [menuOpen, setMenuOpen] = useState(false);
+
+	useEffect(() => {
+		setMenuOpen(false);
+	}, [location.pathname]);
 
 	return (
 		<Container>
