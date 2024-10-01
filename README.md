@@ -1,5 +1,6 @@
 <details>
 <summary>진행중</summary>
+
 - [ ] import lazy를 이용하여 렌더링 속도 향상 시키기.
 - [ ] GeoJSON과 여행경보 API fetch 데이터를 병합하여 Globe 렌더링 시 반복된 비교 연산 줄이기.
 - [ ] Suspense와 React Query의 isLoading을 활용하여, 데이터 fetch 중 대체 컨텐츠 보여주기.
@@ -9,6 +10,7 @@
 
 <details>
 <summary>완료</summary>
+
 - [x] react-globe-gl을 이용한 지구 구현.
 - [x] Globe에 GeoJSON 정보를 이용 국가 Polygon 적용.
 - [x] Globe 국가 타일에 Fetch 받아온 위험경보 매치
@@ -21,7 +23,7 @@
 - [x] 모달 창 구현.
 - [x] Globe의 Polygon 클릭시 상세 페이지 이동 구현.
 - [x] Mobile, LargeMobile, Tablet, LargeTablet, Desktop 반응형 레이아웃 구현.
-- [x]글로벌 Theme을 이용한 레이아웃 정형화_(개선 예정)_
+- [x]글로벌 Theme을 이용한 레이아웃 정형화*(개선 예정)*
 </details>
 
 # Travel Guard (국가별 여행경보 및 정보 제공 서비스)
