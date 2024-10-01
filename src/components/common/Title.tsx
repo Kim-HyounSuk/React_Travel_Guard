@@ -33,6 +33,7 @@ const Container = styled.div`
 	}
 
 	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
+		padding: 1.875rem 0 1.5rem 0;
 		font-size: ${({ theme }) => theme.fontSizes.regular};
 
 		& > h2 {
@@ -41,6 +42,7 @@ const Container = styled.div`
 	}
 
 	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+		padding: 1rem 0;
 		font-size: ${({ theme }) => theme.fontSizes.small};
 
 		& > h2 {
