@@ -21,9 +21,8 @@ const PolygonInfo: React.FC<IProps> = ({ countryInfo, style }) => {
 						isTab={true}
 						color={travelAlertInfo[countryInfo?.alam_lvl as number].color}
 					>
-						{countryInfo?.alam_lvl}단계
+						{`${countryInfo?.alam_lvl}단계 ${countryInfo?.title}`}
 					</BadgeText>
-					<span>{countryInfo?.title}</span>
 				</div>
 				<div>
 					<span>범위: </span>
@@ -45,13 +44,6 @@ const Container = styled(Box)`
 	transform: translate(-50%, 50%);
 	width: 250px;
 	z-index: 1;
-
-	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
-		transform: none;
-		width: 100%;
-		left: unset !important;
-		top: 3rem !important;
-	}
 `;
 
 const CountryTitle = styled.div`

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Badge, Box } from '@/components/common';
+import { BadgeText, Box } from '@/components/common';
 import { travelAlertInfo } from '@/constants';
 import React from 'react';
 
@@ -8,19 +8,18 @@ const TravelAlertList: React.FC = () => {
 		<Container>
 			{Object.values(travelAlertInfo).map((value, idx) => {
 				return (
-					<Content key={idx}>
-						<BadgeContent>
-							<Badge color={value.color} isTab={true} />
-							<span>
-								{idx}단계 {value.title}
-							</span>
-						</BadgeContent>
+					<React.Fragment key={idx}>
+						<BadgeText
+							key={idx}
+							isTab={true}
+							color={value.color}
+						>{`${idx}단계 ${value.title}`}</BadgeText>
 						<Description>
 							{value.text.map((text, idx) => (
 								<span key={idx}>{text}</span>
 							))}
 						</Description>
-					</Content>
+					</React.Fragment>
 				);
 			})}
 		</Container>
@@ -30,29 +29,53 @@ const TravelAlertList: React.FC = () => {
 export default TravelAlertList;
 
 const Container = styled(Box)`
-	display: flex;
-	flex-direction: column;
-	gap: 0.75rem;
-	padding: 1.25rem 1.5rem;
-`;
-
-const Content = styled.div`
+	left: 1rem;
+	bottom: 1rem;
+	width: auto;
+	position: absolute;
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	font-size: ${({ theme }) => theme.fontSizes.small};
-`;
-
-const BadgeContent = styled.div`
-	display: flex;
-	align-items: center;
+	grid-template-columns: 0.5fr 1fr;
 	gap: 0.5rem;
+	align-items: start;
+	font-size: ${({ theme }) => theme.fontSizes.small};
+	justify-content: center;
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet}) {
+		display: flex;
+		width: 100%;
+		left: 0;
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
+		display: grid;
+		width: 100%;
+		grid-template-columns: 1fr 1fr 1fr;
+		align-items: center;
+		justify-content: center;
+
+		& > div {
+			justify-content: center;
+		}
+	}
+
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.mobile}) {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		justify-content: center;
+
+		& > div {
+			justify-content: center;
+		}
+	}
 `;
 
 const Description = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	& > span {
-		font-weight: ${({ theme }) => theme.fontWeights.light};
+	@media (max-width: ${({ theme }) => theme.layout.maxWidth.largeTablet}) {
+		display: none;
 	}
 `;

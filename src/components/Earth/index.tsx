@@ -10,23 +10,25 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import Globe from 'react-globe.gl';
-import TravelAlertList from './TravelAlertList';
+import Globe, { GlobeMethods } from 'react-globe.gl';
 import PolygonInfo from './PolygonInfo';
+import { useNavigate } from 'react-router-dom';
+import TravelAlertList from './TravelAlertList';
 
 const Earth = () => {
+	const navigate = useNavigate();
 	const { data } = useCombinedData();
 	const [geoJson, setGeoJson] = useState<IGeoJson | null>(null);
 	const [hoverPolygon, setHoverPolygon] = useState<IGeoJsonFeature | null>(
 		null,
 	);
-	const [width, setWidth] = useState(0);
-	const [height, setHeight] = useState(0);
+	const [width, setWidth] = useState(window.innerWidth);
+	const [height, setHeight] = useState(window.innerHeight);
 	const [countryInfo, setCountryInfo] = useState<ICountryInfo | null>(null);
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-	const [isTablet, setIsTablet] = useState(false);
 
-	const globeRef = useRef<HTMLDivElement | null>(null);
+	const containerRef = useRef<HTMLDivElement | null>(null);
+	const globeRef = useRef<GlobeMethods | undefined>(undefined);
 
 	// Polygon Color 함수
 	const polygonColorWrapper = useCallback(
@@ -49,12 +51,20 @@ const Earth = () => {
 		(polygon: IGeoJsonFeature | null) => {
 			setHoverPolygon(polygon);
 
-			if (globeRef.current) {
-				globeRef.current.style.cursor = polygon ? 'pointer' : 'default';
+			if (containerRef.current) {
+				containerRef.current.style.cursor = polygon ? 'pointer' : 'default';
 			}
 		},
-		[globeRef],
+		[containerRef],
 	);
+
+	// Polygon Click 이벤트 핸들러
+	const handlePolygonClicked = useCallback(() => {
+		if (!countryInfo) return;
+		if (countryInfo.alam_lvl === 5) return;
+
+		navigate(`/detail/${countryInfo.id.toLowerCase()}`);
+	}, [countryInfo, navigate]);
 
 	// Polygon과 일치하는 Country의 정보 생성 함수
 	const createCountryInfo = useCallback(
@@ -96,10 +106,10 @@ const Earth = () => {
 	// 마우스 Move 이벤트 핸들러
 	const handleMouseMove = useCallback(
 		(e: MouseEvent) => {
-			if (!globeRef.current) return;
+			if (!containerRef.current) return;
 			if (!countryInfo || !hoverPolygon) return;
 			if (countryInfo.id === hoverPolygon.properties.ISO_A2) {
-				const rect = globeRef.current.getBoundingClientRect();
+				const rect = containerRef.current.getBoundingClientRect();
 				const relativeX = e.clientX - rect.left;
 				const relativeY = e.clientY - rect.top;
 
@@ -111,6 +121,37 @@ const Earth = () => {
 		[countryInfo, hoverPolygon],
 	);
 
+	// 반응형 ZoomLevel
+	const updateZoomLevel = () => {
+		if (!containerRef.current) return;
+		const newWidth = containerRef.current.offsetWidth;
+		const newHeight = containerRef.current.offsetHeight;
+
+		setWidth(newWidth);
+		setHeight(newHeight);
+
+		if (globeRef.current) {
+			let zoomDistance;
+
+			if (newWidth <= 480) {
+				// mobile
+				zoomDistance = 800;
+			} else if (newWidth <= 768) {
+				// tablet
+				zoomDistance = 600;
+			} else if (newWidth <= 1024) {
+				// largeTablet
+				zoomDistance = 400;
+			} else {
+				// desktop
+				zoomDistance = 300;
+			}
+
+			// Globe의 카메라 Z축(줌) 설정
+			globeRef.current.camera().position.z = zoomDistance;
+		}
+	};
+
 	// GeoJSON 데이터 fetch
 	useEffect(() => {
 		fetch('datasets/contries.geojson')
@@ -118,39 +159,17 @@ const Earth = () => {
 			.then(setGeoJson);
 	}, []);
 
-	// 반응형 디자인 적용
 	useLayoutEffect(() => {
-		const handleResize = () => {
-			// Globe 사이즈 변경
-			if (globeRef.current) {
-				const { offsetWidth, offsetHeight } = globeRef.current;
-				setWidth(offsetWidth);
-				setHeight(offsetHeight);
+		updateZoomLevel();
 
-				if (height >= offsetWidth) {
-					setWidth(offsetWidth);
-					setHeight(offsetWidth);
-				}
-			}
-
-			// 태블릿 사이즈 판별
-			setIsTablet(window.innerWidth <= 768);
-		};
-
-		handleResize();
-
-		window.addEventListener('resize', handleResize);
-
+		window.addEventListener('resize', updateZoomLevel);
 		return () => {
-			window.removeEventListener('resize', handleResize);
+			window.removeEventListener('resize', updateZoomLevel);
 		};
-	}, [height]);
+	}, [width, height]);
 
 	return (
-		<Container
-			ref={globeRef}
-			onMouseMove={isTablet ? undefined : (e) => handleMouseMove(e)}
-		>
+		<Container ref={containerRef} onMouseMove={(e) => handleMouseMove(e)}>
 			{hoverPolygon && (
 				<PolygonInfo
 					countryInfo={countryInfo}
@@ -161,9 +180,11 @@ const Earth = () => {
 				/>
 			)}
 			<Globe
+				ref={globeRef}
 				globeImageUrl={
 					'//unpkg.com/three-globe/example/img/earth-blue-marble.jpg'
 				}
+				backgroundImageUrl={'//unpkg.com/three-globe/example/img/night-sky.png'}
 				backgroundColor={'rgba(0, 0, 0, 0)'}
 				lineHoverPrecision={0}
 				polygonsData={geoJson?.features.filter(
@@ -187,11 +208,10 @@ const Earth = () => {
 				width={width}
 				height={height}
 				atmosphereColor={'rgba(255, 255, 255, 1)'}
-				atmosphereAltitude={0.1}
+				atmosphereAltitude={0.2}
+				onPolygonClick={() => handlePolygonClicked()}
 			/>
-			<AlertListAticle>
-				<TravelAlertList />
-			</AlertListAticle>
+			<TravelAlertList />
 		</Container>
 	);
 };
@@ -201,22 +221,5 @@ export default Earth;
 const Container = styled.div`
 	width: 100%;
 	height: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	overflow: hidden;
 	position: relative;
-`;
-
-const AlertListAticle = styled.article`
-	position: absolute;
-	bottom: 1rem;
-	left: 0;
-
-	@media (max-width: ${({ theme }) => theme.layout.maxWidth.tablet}) {
-		width: 100%;
-		bottom: 0;
-		left: unset;
-	}
 `;
