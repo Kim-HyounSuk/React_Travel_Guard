@@ -6,6 +6,7 @@
 - [ ] Suspense와 React Query의 isLoading을 활용하여, 데이터 fetch 중 대체 컨텐츠 보여주기.
 - [ ] 데이터 fetch 오류 시, 재 요청 구현.
 - [ ] (추후) 국가별 커뮤니티 게시판, 국가별 채팅방 구현(백엔드 도)
+
 </details>
 
 <details>
@@ -24,6 +25,7 @@
 - [x] Globe의 Polygon 클릭시 상세 페이지 이동 구현.
 - [x] Mobile, LargeMobile, Tablet, LargeTablet, Desktop 반응형 레이아웃 구현.
 - [x]글로벌 Theme을 이용한 레이아웃 정형화*(개선 예정)*
+
 </details>
 
 # Travel Guard (국가별 여행경보 및 정보 제공 서비스)

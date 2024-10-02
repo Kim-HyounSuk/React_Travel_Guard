@@ -10,13 +10,15 @@ interface IProps {
 }
 
 const Modal: React.FC<IProps> = ({ children, onClose }) => {
-	const handleClickedContent = (e: React.MouseEvent) => {
+	const handleClickedContainer = (e: React.MouseEvent) => {
 		e.stopPropagation();
+
+		onClose();
 	};
 
 	return (
-		<Container onClick={onClose}>
-			<Content onClick={handleClickedContent}>
+		<Container onClick={handleClickedContainer}>
+			<Content onClick={(e) => e.stopPropagation()}>
 				{children}
 				<StyledFontAwesomeIcon onClick={onClose} icon={faXmark} />
 			</Content>
@@ -45,6 +47,7 @@ const Content = styled(Box)`
 	max-width: ${({ theme }) => theme.layout.maxWidth.tablet};
 	width: calc(100% - 2rem);
 	aspect-ratio: 1 / 1;
+	cursor: default;
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
