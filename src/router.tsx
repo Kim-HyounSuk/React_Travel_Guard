@@ -1,7 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { Loading } from '@/components/common';
 import Layout from '@/components/layouts';
-import { BannerPage, EmbassyPage, MainPage, PermissionPage } from '@/pages';
-import DetailPage from './pages/DetailPage';
+
+const BannerPage = React.lazy(() => import('@/pages/BannerPage'));
+const MainPage = React.lazy(() => import('@/pages/MainPage'));
+const EmbassyPage = React.lazy(() => import('@/pages/EmbassyPage'));
+const PermissionPage = React.lazy(() => import('@/pages/PermissionPage'));
+const DetailPage = React.lazy(() => import('@/pages/DetailPage'));
 
 const router = createBrowserRouter([
 	{
@@ -10,23 +16,43 @@ const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: <BannerPage />,
+				element: (
+					<Suspense fallback={<Loading />}>
+						<BannerPage />
+					</Suspense>
+				),
 			},
 			{
 				path: 'main/',
-				element: <MainPage />,
+				element: (
+					<Suspense fallback={<Loading />}>
+						<MainPage />
+					</Suspense>
+				),
 			},
 			{
 				path: 'embassy/',
-				element: <EmbassyPage />,
+				element: (
+					<Suspense fallback={<Loading />}>
+						<EmbassyPage />
+					</Suspense>
+				),
 			},
 			{
 				path: 'permission/',
-				element: <PermissionPage />,
+				element: (
+					<Suspense fallback={<Loading />}>
+						<PermissionPage />
+					</Suspense>
+				),
 			},
 			{
 				path: 'detail/:iso',
-				element: <DetailPage />,
+				element: (
+					<Suspense fallback={<Loading />}>
+						<DetailPage />
+					</Suspense>
+				),
 			},
 		],
 	},
