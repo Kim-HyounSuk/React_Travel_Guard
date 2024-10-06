@@ -6,12 +6,13 @@ import { ThemeProvider } from '@emotion/react';
 import GlobalStyle from '@/styles/GlobalStyle';
 import theme from '@/styles/theme';
 import ResetStyle from '@/styles/ResetStyle';
+import { HelmetProvider } from 'react-helmet-async';
 
 const App = () => {
 	const queryClient = new QueryClient();
 
 	return (
-		<>
+		<HelmetProvider>
 			<QueryClientProvider client={queryClient}>
 				<ThemeProvider theme={theme}>
 					<ResetStyle />
@@ -20,7 +21,7 @@ const App = () => {
 				</ThemeProvider>
 				<ReactQueryDevtools initialIsOpen={true} />
 			</QueryClientProvider>
-		</>
+		</HelmetProvider>
 	);
 };
 
