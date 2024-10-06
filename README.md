@@ -1,9 +1,6 @@
 <details>
 <summary>진행중</summary>
-
-- [ ] import lazy를 이용하여 렌더링 속도 향상 시키기.
 - [ ] GeoJSON과 여행경보 API fetch 데이터를 병합하여 Globe 렌더링 시 반복된 비교 연산 줄이기.
-- [ ] Suspense와 React Query의 isLoading을 활용하여, 데이터 fetch 중 대체 컨텐츠 보여주기.
 - [ ] 데이터 fetch 오류 시, 재 요청 구현.
 - [ ] (추후) 국가별 커뮤니티 게시판, 국가별 채팅방 구현(백엔드 도)
 
@@ -25,6 +22,8 @@
 - [x] Globe의 Polygon 클릭시 상세 페이지 이동 구현.
 - [x] Mobile, LargeMobile, Tablet, LargeTablet, Desktop 반응형 레이아웃 구현.
 - [x]글로벌 Theme을 이용한 레이아웃 정형화*(개선 예정)*
+- [x] Suspense와 React Query의 isLoading을 활용하여, 데이터 fetch 중 대체 컨텐츠 보여주기.
+- [x] import lazy를 이용하여 렌더링 속도 향상 시키기.
 
 </details>
 
