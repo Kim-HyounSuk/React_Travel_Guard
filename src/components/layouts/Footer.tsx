@@ -19,4 +19,5 @@ const Container = styled.div`
 	width: 100%;
 	font-size: ${({ theme }) => theme.fontSizes.small};
 	padding: 0.5rem 0;
+	min-width: ${({ theme }) => theme.layout.minWidth.mobile};
 `;
