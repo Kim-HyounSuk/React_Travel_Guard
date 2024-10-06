@@ -22,7 +22,7 @@ const ContentBox: React.FC<IProps> = React.memo(({ content }) => {
 	return (
 		<Container>
 			<Title onClick={() => setIsActive((prev) => !prev)}>
-				<EmbassyName>{`${content.country_nm} ${content.embassy_ty_cd_nm}`}</EmbassyName>
+				<EmbassyName>{content.embassy_kor_nm}</EmbassyName>
 				{isActive ? (
 					<FontAwesomeIcon icon={faAngleUp} />
 				) : (
