@@ -1,20 +1,20 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { Loading } from '@/components/common';
 import Layout from '@/components/layouts';
-import {
-	BannerPage,
-	DetailPage,
-	EmbassyPage,
-	MainPage,
-	PermissionPage,
-} from '@/pages';
+// import {
+// 	BannerPage,
+// 	DetailPage,
+// 	EmbassyPage,
+// 	MainPage,
+// 	PermissionPage,
+// } from '@/pages';
 
-// const BannerPage = React.lazy(() => import('@/pages/BannerPage'));
-// const MainPage = React.lazy(() => import('@/pages/MainPage'));
-// const EmbassyPage = React.lazy(() => import('@/pages/EmbassyPage'));
-// const PermissionPage = React.lazy(() => import('@/pages/PermissionPage'));
-// const DetailPage = React.lazy(() => import('@/pages/DetailPage'));
+const BannerPage = React.lazy(() => import('@/pages/BannerPage'));
+const MainPage = React.lazy(() => import('@/pages/MainPage'));
+const EmbassyPage = React.lazy(() => import('@/pages/EmbassyPage'));
+const PermissionPage = React.lazy(() => import('@/pages/PermissionPage'));
+const DetailPage = React.lazy(() => import('@/pages/DetailPage'));
 
 const router = createBrowserRouter([
 	{
