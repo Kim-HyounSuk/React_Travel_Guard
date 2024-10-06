@@ -22,7 +22,7 @@
 - [x] 모달 창 구현.
 - [x] Globe의 Polygon 클릭시 상세 페이지 이동 구현.
 - [x] Mobile, LargeMobile, Tablet, LargeTablet, Desktop 반응형 레이아웃 구현.
-- [x]글로벌 Theme을 이용한 레이아웃 정형화*(개선 예정)*
+- [x] 글로벌 Theme을 이용한 레이아웃 정형화*(개선 예정)*
 - [x] Suspense와 React Query의 isLoading을 활용하여, 데이터 fetch 중 대체 컨텐츠 보여주기.
 - [x] import lazy를 이용하여 렌더링 속도 향상 시키기.
 
