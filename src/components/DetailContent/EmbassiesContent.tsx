@@ -10,7 +10,7 @@ interface IProps {
 }
 
 const EmbassiesContent: React.FC<IProps> = React.memo(({ embassies }) => {
-	const [isActive, setIsActive] = useState(false);
+	const [isActive, setIsActive] = useState(true);
 
 	return (
 		<Container>
@@ -60,6 +60,11 @@ const Title = styled(Box)`
 	align-items: center;
 	cursor: pointer;
 	font-weight: ${({ theme }) => theme.fontWeights.bold};
+
+	&:hover > span,
+	&:hover > svg > path {
+		color: ${({ theme }) => theme.colors.primary};
+	}
 `;
 
 const ContentBox = styled.div`
