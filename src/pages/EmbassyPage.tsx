@@ -4,6 +4,7 @@ import { Loading, SearchInput, Title, Wrapper } from '@/components/common';
 import { IEmbassy } from '@/types/embassies';
 import styled from '@emotion/styled';
 import React, { Suspense, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const EmbassyContent = React.lazy(() => import('@/components/Embassy'));
 
@@ -43,6 +44,17 @@ const EmbassyPage = () => {
 
 	return (
 		<Container>
+			<Helmet>
+				<title>{`TravelGuard - 국가별 재외공관 정보`}</title>
+				<meta
+					name="description"
+					content="국가별 재외공관 위치, 연락처 등을 확인할 수 있습니다."
+				/>
+				<meta
+					name="keywords"
+					content="국가별, 재외공관, 재외공관 위치, 재외공관 연락처, 위치, 연락처"
+				/>
+			</Helmet>
 			<Suspense fallback={<Loading />}>
 				<Title
 					data={{

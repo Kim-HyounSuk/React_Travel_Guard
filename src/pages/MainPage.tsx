@@ -4,6 +4,7 @@ import ICombinedData from '@/types/combinedData';
 import useCombinedData from '@/utils/useCombinedData';
 import styled from '@emotion/styled';
 import React, { Suspense, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 const CountriesContent = React.lazy(() => import('@/components/Countries'));
 
@@ -39,6 +40,14 @@ const MainPage = () => {
 
 	return (
 		<Container>
+			<Helmet>
+				<title>{`TravelGuard - 국가별 정보`}</title>
+				<meta
+					name="description"
+					content="국가별 현지 연락처, 사건•사고 정보, 문화 등 다양한 정보를 제공합니다."
+				/>
+				<meta name="keywords" content="여행, 안전, 국가별 정보, 여행 경보" />
+			</Helmet>
 			<Suspense fallback={<Loading />}>
 				<Title
 					data={{

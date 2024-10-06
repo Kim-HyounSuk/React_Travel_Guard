@@ -7,6 +7,7 @@ import { INotice } from '@/types/notices';
 import useCombinedData from '@/utils/useCombinedData';
 import styled from '@emotion/styled';
 import React, { Suspense, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 
 const DetailContent = React.lazy(() => import('@/components/DetailContent'));
@@ -39,11 +40,22 @@ const DetailPage = () => {
 
 	return (
 		<Container>
+			<Helmet>
+				<title>{`TravelGuard - ${country?.country_nm} 상세정보`}</title>
+				<meta
+					name="description"
+					content={`${country?.country_nm}의 안전공지, 여행경보 지도, 입국 허가 요건, 재외공관 정보를 확인할 수 있습니다.`}
+				/>
+				<meta
+					name="keywords"
+					content={`${country?.country_nm}, 여행경보, 안전공지, 여행경보, 입국 허가 요건`}
+				/>
+			</Helmet>
 			<Suspense fallback={<Loading />}>
 				<Title
 					data={{
 						title: '국가별 상세정보',
-						text: '국가별 안전공지, 여행경보 지도, 입국 허가 요건, 제외공광 정보를 확인할 수 있습니다.',
+						text: '국가별 안전공지, 여행경보 지도, 입국 허가 요건, 재외공관 정보를 확인할 수 있습니다.',
 					}}
 				/>
 				{isLoading ? (
