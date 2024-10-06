@@ -12,7 +12,7 @@ const EmbassyPage = () => {
 	const [embassies, setEmbassies] = useState<IEmbassy[] | null>(null);
 
 	const onSearch = (query: string) => {
-		if (!data || !embassies) return;
+		if (!data) return;
 
 		query = query.trim();
 		if (query === '') {
@@ -20,9 +20,12 @@ const EmbassyPage = () => {
 			return;
 		}
 
+		if (query === '중국') query = 'china';
+		if (query === '미국') query = '미합중국';
+
 		const lowerQuery = query.toLowerCase();
 
-		const filtredData = embassies.filter(
+		const filtredData = data.data.filter(
 			(embassy) =>
 				embassy.embassy_kor_nm.toLowerCase().includes(lowerQuery) ||
 				embassy.country_nm.toLowerCase().includes(lowerQuery) ||
