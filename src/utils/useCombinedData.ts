@@ -32,6 +32,10 @@ const useCombinedData = () => {
 			if (!permission) {
 				return {
 					...travelAlert,
+					country_nm:
+						travelAlert.country_nm === '미합중국'
+							? '미국'
+							: travelAlert.country_nm,
 					alarm_lvl: travelAlert.alarm_lvl || 0,
 					region_ty: travelAlert.region_ty || '전체',
 					remark: travelAlert.remark || '전체',
@@ -41,6 +45,10 @@ const useCombinedData = () => {
 
 			return {
 				...travelAlert,
+				country_nm:
+					travelAlert.country_nm === '미합중국'
+						? '미국'
+						: travelAlert.country_nm,
 				alarm_lvl: travelAlert.alarm_lvl || 0,
 				region_ty: travelAlert.region_ty || '전체',
 				remark: travelAlert.remark || '전체',
