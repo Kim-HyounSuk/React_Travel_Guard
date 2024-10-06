@@ -20,9 +20,6 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: rgba(0, 0, 0, 0.5);
-	position: fixed;
-	z-index: 3;
 	width: 100%;
 	height: 100%;
 	gap: 1rem;
