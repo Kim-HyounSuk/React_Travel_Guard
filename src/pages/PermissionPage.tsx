@@ -1,14 +1,16 @@
-import { SearchInput, Title, Wrapper } from '@/components/common';
-import Permission from '@/components/Permission';
+import { Loading, SearchInput, Title, Wrapper } from '@/components/common';
+// import Permission from '@/components/Permission';
 import ICombinedData from '@/types/combinedData';
 import useCombinedData from '@/utils/useCombinedData';
 import useFilteredPermission from '@/utils/useFilteredPermission';
 import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
+
+const PermissionContent = React.lazy(() => import('@/components/Permission'));
 
 const PermissionPage = () => {
 	const { data } = useCombinedData();
-	const [countries, setCountries] = useState<ICombinedData[]>([]);
+	const [countries, setCountries] = useState<ICombinedData[] | null>(null);
 	const filtered = useFilteredPermission(data);
 
 	useEffect(() => {
@@ -39,14 +41,16 @@ const PermissionPage = () => {
 
 	return (
 		<Container>
-			<Title
-				data={{
-					title: '국가별 입국 허가요건',
-					text: '국가별 입국 가능 기간, 입국 가능 여부, 입국시 여권 소지 여부를 확인할 수 있습니다.',
-				}}
-			/>
-			<SearchInput onSearch={onSearch} placeholder={'국가명을 입력하세요.'} />
-			<Permission data={countries} />
+			<Suspense fallback={<Loading />}>
+				<Title
+					data={{
+						title: '국가별 입국 허가요건',
+						text: '국가별 입국 가능 기간, 입국 가능 여부, 입국시 여권 소지 여부를 확인할 수 있습니다.',
+					}}
+				/>
+				<SearchInput onSearch={onSearch} placeholder={'국가명을 입력하세요.'} />
+				{countries ? <PermissionContent data={countries} /> : <Loading />}
+			</Suspense>
 		</Container>
 	);
 };

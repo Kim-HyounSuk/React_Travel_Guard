@@ -1,13 +1,15 @@
-import { SearchInput, Title, Wrapper } from '@/components/common';
-import Countries from '@/components/Countries';
+import { Loading, SearchInput, Title, Wrapper } from '@/components/common';
+// import Countries from '@/components/Countries';
 import ICombinedData from '@/types/combinedData';
 import useCombinedData from '@/utils/useCombinedData';
 import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
+
+const CountriesContent = React.lazy(() => import('@/components/Countries'));
 
 const MainPage = () => {
 	const { data } = useCombinedData();
-	const [countries, setCountries] = useState<ICombinedData[]>([]);
+	const [countries, setCountries] = useState<ICombinedData[] | null>(null);
 
 	useEffect(() => {
 		if (!data) return;
@@ -37,14 +39,16 @@ const MainPage = () => {
 
 	return (
 		<Container>
-			<Title
-				data={{
-					title: '국가별 정보',
-					text: '국가별 현지 연락처, 사건•사고 정보, 문화 등 다양한 정보를 제공합니다.',
-				}}
-			/>
-			<SearchInput onSearch={onSearch} placeholder={'국가명을 입력하세요.'} />
-			<Countries data={countries} />
+			<Suspense fallback={<Loading />}>
+				<Title
+					data={{
+						title: '국가별 정보',
+						text: '국가별 현지 연락처, 사건•사고 정보, 문화 등 다양한 정보를 제공합니다.',
+					}}
+				/>
+				<SearchInput onSearch={onSearch} placeholder={'국가명을 입력하세요.'} />
+				{countries ? <CountriesContent data={countries} /> : <Loading />}
+			</Suspense>
 		</Container>
 	);
 };

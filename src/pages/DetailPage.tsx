@@ -1,13 +1,15 @@
 import { useEmbassies, useNotices } from '@/api';
-import { Title, Wrapper } from '@/components/common';
-import DetailContent from '@/components/DetailContent';
+import { Loading, Title, Wrapper } from '@/components/common';
+// import DetailContent from '@/components/DetailContent';
 import ICombinedData from '@/types/combinedData';
 import { IEmbassy } from '@/types/embassies';
 import { INotice } from '@/types/notices';
 import useCombinedData from '@/utils/useCombinedData';
 import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
+const DetailContent = React.lazy(() => import('@/components/DetailContent'));
 
 const DetailPage = () => {
 	const { iso } = useParams();
@@ -15,8 +17,8 @@ const DetailPage = () => {
 	const { data: embassiesData } = useEmbassies();
 	const { data: noticesData } = useNotices(iso?.toUpperCase() as string);
 
-	const [country, setCountry] = useState<ICombinedData>();
-	const [embassies, setEmbassies] = useState<IEmbassy[]>();
+	const [country, setCountry] = useState<ICombinedData | undefined>(undefined);
+	const [embassies, setEmbassies] = useState<IEmbassy[] | undefined>(undefined);
 
 	useEffect(() => {
 		if (!combiendData || !embassiesData || !iso) return;
@@ -33,21 +35,27 @@ const DetailPage = () => {
 		setEmbassies(filteredembassiesInfo);
 	}, [combiendData, embassiesData, iso]);
 
+	const isLoading = country && embassies && noticesData;
+
 	return (
 		<Container>
-			<Title
-				data={{
-					title: '국가별 상세정보',
-					text: '국가별 안전공지, 여행경보 지도, 입국 허가 요건, 제외공광 정보를 확인할 수 있습니다.',
-				}}
-			/>
-			{country && embassies && noticesData && (
-				<DetailContent
-					country={country as ICombinedData}
-					notices={noticesData?.data as INotice[]}
-					embassies={embassies as IEmbassy[]}
+			<Suspense fallback={<Loading />}>
+				<Title
+					data={{
+						title: '국가별 상세정보',
+						text: '국가별 안전공지, 여행경보 지도, 입국 허가 요건, 제외공광 정보를 확인할 수 있습니다.',
+					}}
 				/>
-			)}
+				{isLoading ? (
+					<DetailContent
+						country={country as ICombinedData}
+						notices={noticesData?.data as INotice[]}
+						embassies={embassies as IEmbassy[]}
+					/>
+				) : (
+					<Loading />
+				)}
+			</Suspense>
 		</Container>
 	);
 };

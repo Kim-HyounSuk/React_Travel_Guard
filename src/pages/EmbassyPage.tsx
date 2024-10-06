@@ -1,16 +1,18 @@
 import { useEmbassies } from '@/api';
-import { SearchInput, Title, Wrapper } from '@/components/common';
-import Embassy from '@/components/Embassy';
+import { Loading, SearchInput, Title, Wrapper } from '@/components/common';
+// import Embassy from '@/components/Embassy';
 import { IEmbassy } from '@/types/embassies';
 import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
+
+const EmbassyContent = React.lazy(() => import('@/components/Embassy'));
 
 const EmbassyPage = () => {
 	const { data } = useEmbassies();
-	const [embassies, setEmbassies] = useState<IEmbassy[]>([]);
+	const [embassies, setEmbassies] = useState<IEmbassy[] | null>(null);
 
 	const onSearch = (query: string) => {
-		if (!data) return;
+		if (!data || !embassies) return;
 
 		query = query.trim();
 		if (query === '') {
@@ -38,17 +40,19 @@ const EmbassyPage = () => {
 
 	return (
 		<Container>
-			<Title
-				data={{
-					title: '국가별 재외공관 정보',
-					text: '국가별 재외공관 위치, 연락처 등을 확인할 수 있습니다.',
-				}}
-			/>
-			<SearchInput
-				onSearch={onSearch}
-				placeholder={'국가 또는 지역을 입력하세요.'}
-			/>
-			<Embassy data={embassies} />
+			<Suspense fallback={<Loading />}>
+				<Title
+					data={{
+						title: '국가별 재외공관 정보',
+						text: '국가별 재외공관 위치, 연락처 등을 확인할 수 있습니다.',
+					}}
+				/>
+				<SearchInput
+					onSearch={onSearch}
+					placeholder={'국가 또는 지역을 입력하세요.'}
+				/>
+				{embassies ? <EmbassyContent data={embassies} /> : <Loading />}
+			</Suspense>
 		</Container>
 	);
 };
