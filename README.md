@@ -1,7 +1,6 @@
 <details>
 <summary>진행중</summary>
-- [ ] GeoJSON과 여행경보 API fetch 데이터를 병합하여 Globe 렌더링 시 반복된 비교 연산 줄이기.
-- [ ] 데이터 fetch 오류 시, 재 요청 구현.
+- [ ] GeoJSON과 여행경보 API fetch 데이터를 병합하여 Globe 렌더링 시 반복된 비교 연산 줄이기(필요성 판단 중).
 - [ ] (추후) 국가별 커뮤니티 게시판, 국가별 채팅방 구현(백엔드 도)
 
 </details>
@@ -9,6 +8,8 @@
 <details>
 <summary>완료</summary>
 
+- [x] 데이터 fetch 오류 시, 재 요청 구현.
+- [x] react-helment을 이용한 SEO 최적화.
 - [x] react-globe-gl을 이용한 지구 구현.
 - [x] Globe에 GeoJSON 정보를 이용 국가 Polygon 적용.
 - [x] Globe 국가 타일에 Fetch 받아온 위험경보 매치
