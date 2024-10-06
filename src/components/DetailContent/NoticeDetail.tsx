@@ -8,7 +8,7 @@ interface IProps {
 	onClose: () => void;
 }
 
-const NoticeDetail: React.FC<IProps> = ({ notice, onClose }) => {
+const NoticeDetail: React.FC<IProps> = React.memo(({ notice, onClose }) => {
 	return (
 		<Modal onClose={onClose}>
 			<Title>
@@ -20,7 +20,7 @@ const NoticeDetail: React.FC<IProps> = ({ notice, onClose }) => {
 			</Container>
 		</Modal>
 	);
-};
+});
 
 export default NoticeDetail;
 

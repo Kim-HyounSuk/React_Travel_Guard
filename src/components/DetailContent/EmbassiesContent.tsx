@@ -9,7 +9,7 @@ interface IProps {
 	embassies: IEmbassy[];
 }
 
-const EmbassiesContent: React.FC<IProps> = ({ embassies }) => {
+const EmbassiesContent: React.FC<IProps> = React.memo(({ embassies }) => {
 	const [isActive, setIsActive] = useState(false);
 
 	return (
@@ -44,7 +44,7 @@ const EmbassiesContent: React.FC<IProps> = ({ embassies }) => {
 			) : null}
 		</Container>
 	);
-};
+});
 
 export default EmbassiesContent;
 

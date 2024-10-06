@@ -7,13 +7,13 @@ interface IProps {
 	onClose: () => void;
 }
 
-const MapDetail: React.FC<IProps> = ({ imgURL, onClose }) => {
+const MapDetail: React.FC<IProps> = React.memo(({ imgURL, onClose }) => {
 	return (
 		<Modal onClose={onClose}>
 			<Image src={imgURL} alt={'map'} />
 		</Modal>
 	);
-};
+});
 
 export default MapDetail;
 

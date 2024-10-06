@@ -10,7 +10,7 @@ interface IProps {
 	style: React.CSSProperties;
 }
 
-const PolygonInfo: React.FC<IProps> = ({ countryInfo, style }) => {
+const PolygonInfo: React.FC<IProps> = React.memo(({ countryInfo, style }) => {
 	return (
 		<Container style={style}>
 			<CountryTitle>
@@ -31,7 +31,7 @@ const PolygonInfo: React.FC<IProps> = ({ countryInfo, style }) => {
 			</CountryTitle>
 		</Container>
 	);
-};
+});
 
 export default PolygonInfo;
 

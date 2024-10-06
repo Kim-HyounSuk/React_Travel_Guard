@@ -8,7 +8,7 @@ interface IProps {
 	data: ICombinedData[];
 }
 
-const ContentBox: React.FC<IProps> = ({ data }) => {
+const ContentBox: React.FC<IProps> = React.memo(({ data }) => {
 	return (
 		<Container>
 			{data.length > 0 ? (
@@ -29,7 +29,7 @@ const ContentBox: React.FC<IProps> = ({ data }) => {
 			)}
 		</Container>
 	);
-};
+});
 
 export default ContentBox;
 

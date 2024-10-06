@@ -7,7 +7,7 @@ interface IProps {
 	country: ICombinedData;
 }
 
-const Title: React.FC<IProps> = ({ country }) => {
+const Title: React.FC<IProps> = React.memo(({ country }) => {
 	return (
 		<Container>
 			<Image>
@@ -22,7 +22,7 @@ const Title: React.FC<IProps> = ({ country }) => {
 			</ContentTitle>
 		</Container>
 	);
-};
+});
 
 export default Title;
 

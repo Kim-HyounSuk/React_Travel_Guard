@@ -8,7 +8,7 @@ interface IProps {
 	notices: INotice[];
 }
 
-const Notice: React.FC<IProps> = ({ notices }) => {
+const Notice: React.FC<IProps> = React.memo(({ notices }) => {
 	const [isModal, setIsModal] = useState<INotice | null>(null);
 
 	return (
@@ -31,7 +31,7 @@ const Notice: React.FC<IProps> = ({ notices }) => {
 			)}
 		</Container>
 	);
-};
+});
 
 export default Notice;
 

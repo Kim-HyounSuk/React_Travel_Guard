@@ -10,7 +10,7 @@ interface IProps {
 	content: IEmbassy;
 }
 
-const ContentBox: React.FC<IProps> = ({ content }) => {
+const ContentBox: React.FC<IProps> = React.memo(({ content }) => {
 	const [isActive, setIsActive] = useState(false);
 
 	const navigate = useNavigate();
@@ -44,7 +44,7 @@ const ContentBox: React.FC<IProps> = ({ content }) => {
 			) : null}
 		</Container>
 	);
-};
+});
 
 export default ContentBox;
 

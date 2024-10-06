@@ -11,33 +11,35 @@ interface IProps {
 	onSelectTab: (tab: ITab) => void;
 }
 
-const Tabs: React.FC<IProps> = ({ tabs, activeTab, onSelectTab, length }) => {
-	return (
-		<Container>
-			{tabs.map((tab, idx) =>
-				tab.value !== null ? (
-					<Tab
-						key={idx}
-						onClick={() => onSelectTab(tab)}
-						isActive={activeTab === tab}
-					>
-						<BadgeText isTab={true} color={travelAlertInfo[tab.value].color}>
-							{`${tab.label}${activeTab === tab ? `(${length})` : ''}`}
-						</BadgeText>
-					</Tab>
-				) : (
-					<Tab
-						key={'전체'}
-						onClick={() => onSelectTab(tab)}
-						isActive={activeTab === tab}
-					>
-						전체{activeTab === tab ? `(${length})` : ''}
-					</Tab>
-				),
-			)}
-		</Container>
-	);
-};
+const Tabs: React.FC<IProps> = React.memo(
+	({ tabs, activeTab, onSelectTab, length }) => {
+		return (
+			<Container>
+				{tabs.map((tab, idx) =>
+					tab.value !== null ? (
+						<Tab
+							key={idx}
+							onClick={() => onSelectTab(tab)}
+							isActive={activeTab === tab}
+						>
+							<BadgeText isTab={true} color={travelAlertInfo[tab.value].color}>
+								{`${tab.label}${activeTab === tab ? `(${length})` : ''}`}
+							</BadgeText>
+						</Tab>
+					) : (
+						<Tab
+							key={'전체'}
+							onClick={() => onSelectTab(tab)}
+							isActive={activeTab === tab}
+						>
+							전체{activeTab === tab ? `(${length})` : ''}
+						</Tab>
+					),
+				)}
+			</Container>
+		);
+	},
+);
 
 export default Tabs;
 

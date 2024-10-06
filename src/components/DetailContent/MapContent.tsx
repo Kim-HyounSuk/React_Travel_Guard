@@ -8,7 +8,7 @@ interface IProps {
 	country: ICombinedData;
 }
 
-const Map: React.FC<IProps> = ({ country }) => {
+const Map: React.FC<IProps> = React.memo(({ country }) => {
 	const [isModal, setIsModal] = useState<string | null>(null);
 
 	return (
@@ -22,7 +22,7 @@ const Map: React.FC<IProps> = ({ country }) => {
 			/>
 		</Container>
 	);
-};
+});
 
 export default Map;
 

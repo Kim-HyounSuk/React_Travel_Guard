@@ -9,7 +9,7 @@ interface IProps {
 	data: ICombinedData[];
 }
 
-const Countries: React.FC<IProps> = ({ data }) => {
+const Countries: React.FC<IProps> = React.memo(({ data }) => {
 	const { activeTab, tabs, filteredData, onSelectTab } = useTabs(data);
 
 	return (
@@ -23,7 +23,7 @@ const Countries: React.FC<IProps> = ({ data }) => {
 			<ContentBox data={filteredData} />
 		</Container>
 	);
-};
+});
 
 export default Countries;
 

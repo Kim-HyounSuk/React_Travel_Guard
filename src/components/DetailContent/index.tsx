@@ -15,19 +15,21 @@ interface IProps {
 	notices: INotice[];
 }
 
-const DetailContent: React.FC<IProps> = ({ country, embassies, notices }) => {
-	return (
-		<Container>
-			<ContentTitle country={country} />
-			<ContentWrap>
-				<MapContent country={country} />
-				<NoticesContent notices={notices} />
-				<PermissionContent country={country} />
-			</ContentWrap>
-			<EmbassiesContent embassies={embassies} />
-		</Container>
-	);
-};
+const DetailContent: React.FC<IProps> = React.memo(
+	({ country, embassies, notices }) => {
+		return (
+			<Container>
+				<ContentTitle country={country} />
+				<ContentWrap>
+					<MapContent country={country} />
+					<NoticesContent notices={notices} />
+					<PermissionContent country={country} />
+				</ContentWrap>
+				<EmbassiesContent embassies={embassies} />
+			</Container>
+		);
+	},
+);
 
 export default DetailContent;
 

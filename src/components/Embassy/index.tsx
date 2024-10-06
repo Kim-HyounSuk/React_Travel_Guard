@@ -8,7 +8,7 @@ interface IProps {
 	data: IEmbassy[];
 }
 
-const Embassy: React.FC<IProps> = ({ data }) => {
+const Embassy: React.FC<IProps> = React.memo(({ data }) => {
 	return (
 		<Container>
 			{data.length > 0 ? (
@@ -18,7 +18,7 @@ const Embassy: React.FC<IProps> = ({ data }) => {
 			)}
 		</Container>
 	);
-};
+});
 
 export default Embassy;
 

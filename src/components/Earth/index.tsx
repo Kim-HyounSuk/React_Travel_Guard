@@ -2,7 +2,7 @@ import { travelAlertInfo } from '@/constants';
 import { ICountryInfo, IGeoJsonFeature } from '@/types/globe';
 import useCombinedData from '@/utils/useCombinedData';
 import styled from '@emotion/styled';
-import {
+import React, {
 	MouseEvent,
 	useCallback,
 	useLayoutEffect,
@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import TravelAlertList from './TravelAlertList';
 import useGeoJSON from '@/api/geoJSON';
 
-const Earth = () => {
+const Earth = React.memo(() => {
 	const navigate = useNavigate();
 	const { data: combinedData } = useCombinedData();
 	const { data: geoJSONData } = useGeoJSON();
@@ -123,7 +123,7 @@ const Earth = () => {
 	);
 
 	// 반응형 ZoomLevel
-	const updateZoomLevel = () => {
+	const updateZoomLevel = useCallback(() => {
 		if (!containerRef.current) return;
 		const newWidth = containerRef.current.offsetWidth;
 		const newHeight = containerRef.current.offsetHeight;
@@ -151,7 +151,7 @@ const Earth = () => {
 			// Globe의 카메라 Z축(줌) 설정
 			globeRef.current.camera().position.z = zoomDistance;
 		}
-	};
+	}, [globeRef]);
 
 	useLayoutEffect(() => {
 		updateZoomLevel();
@@ -160,7 +160,7 @@ const Earth = () => {
 		return () => {
 			window.removeEventListener('resize', updateZoomLevel);
 		};
-	}, [width, height]);
+	}, [updateZoomLevel]);
 
 	return (
 		<Container ref={containerRef} onMouseMove={(e) => handleMouseMove(e)}>
@@ -208,7 +208,7 @@ const Earth = () => {
 			<TravelAlertList />
 		</Container>
 	);
-};
+});
 
 export default Earth;
 

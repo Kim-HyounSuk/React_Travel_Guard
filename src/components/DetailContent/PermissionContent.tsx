@@ -7,7 +7,7 @@ interface IProps {
 	country: ICombinedData;
 }
 
-const PermissionContent: React.FC<IProps> = ({ country }) => {
+const PermissionContent: React.FC<IProps> = React.memo(({ country }) => {
 	return country.entry ? (
 		<Container>
 			<ItemRow>
@@ -32,7 +32,7 @@ const PermissionContent: React.FC<IProps> = ({ country }) => {
 			<NonItem>해당 국가의 입국 허가 요건 정보가 없습니다.</NonItem>
 		</Container>
 	);
-};
+});
 
 export default PermissionContent;
 
