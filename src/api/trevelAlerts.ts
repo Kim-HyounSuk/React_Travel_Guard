@@ -17,6 +17,8 @@ const useTravelAlerts = () => {
 		queryFn: fetchTravelAlerts,
 		staleTime: 1800000,
 		gcTime: 3600000,
+		retry: 3,
+		retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 30000),
 	});
 };
 
