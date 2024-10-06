@@ -1,11 +1,10 @@
 import { travelAlertInfo } from '@/constants';
-import { ICountryInfo, IGeoJson, IGeoJsonFeature } from '@/types/globe';
+import { ICountryInfo, IGeoJsonFeature } from '@/types/globe';
 import useCombinedData from '@/utils/useCombinedData';
 import styled from '@emotion/styled';
 import {
 	MouseEvent,
 	useCallback,
-	useEffect,
 	useLayoutEffect,
 	useRef,
 	useState,
@@ -14,11 +13,13 @@ import Globe, { GlobeMethods } from 'react-globe.gl';
 import PolygonInfo from './PolygonInfo';
 import { useNavigate } from 'react-router-dom';
 import TravelAlertList from './TravelAlertList';
+import useGeoJSON from '@/api/geoJSON';
 
 const Earth = () => {
 	const navigate = useNavigate();
-	const { data } = useCombinedData();
-	const [geoJson, setGeoJson] = useState<IGeoJson | null>(null);
+	const { data: combinedData } = useCombinedData();
+	const { data: geoJSONData } = useGeoJSON();
+
 	const [hoverPolygon, setHoverPolygon] = useState<IGeoJsonFeature | null>(
 		null,
 	);
@@ -35,7 +36,7 @@ const Earth = () => {
 		(polygon: IGeoJsonFeature | null) => {
 			if (!polygon) return travelAlertInfo[5].color;
 
-			const country = data?.find(
+			const country = combinedData?.find(
 				(country) =>
 					country.country_iso_alp2 === polygon?.properties.ISO_A2 ||
 					country.country_eng_nm === polygon.properties.ADMIN,
@@ -43,7 +44,7 @@ const Earth = () => {
 
 			return country ? country.color : travelAlertInfo[5].color;
 		},
-		[data],
+		[combinedData],
 	);
 
 	// Polygon Hover 이벤트 핸들러
@@ -74,7 +75,7 @@ const Earth = () => {
 				return;
 			}
 
-			const country = data?.find(
+			const country = combinedData?.find(
 				(country) =>
 					country.country_iso_alp2 === polygon.properties.ISO_A2 ||
 					country.country_eng_nm === polygon.properties.ADMIN,
@@ -100,7 +101,7 @@ const Earth = () => {
 				});
 			}
 		},
-		[data],
+		[combinedData],
 	);
 
 	// 마우스 Move 이벤트 핸들러
@@ -152,13 +153,6 @@ const Earth = () => {
 		}
 	};
 
-	// GeoJSON 데이터 fetch
-	useEffect(() => {
-		fetch('datasets/contries.geojson')
-			.then((res) => res.json())
-			.then(setGeoJson);
-	}, []);
-
 	useLayoutEffect(() => {
 		updateZoomLevel();
 
@@ -187,7 +181,7 @@ const Earth = () => {
 				backgroundImageUrl={'//unpkg.com/three-globe/example/img/night-sky.png'}
 				backgroundColor={'rgba(0, 0, 0, 0)'}
 				lineHoverPrecision={0}
-				polygonsData={geoJson?.features.filter(
+				polygonsData={geoJSONData?.features.filter(
 					(country) =>
 						country.properties.ISO_A2 !== 'AQ' &&
 						country.properties.ISO_A2 !== 'KR',
