@@ -9,7 +9,7 @@
 <summary>완료</summary>
 
 - [x] 데이터 fetch 오류 시, 재 요청 구현.
-- [x] react-helment을 이용한 SEO 최적화.
+- [x] react-helmet을 이용한 SEO 최적화.
 - [x] react-globe-gl을 이용한 지구 구현.
 - [x] Globe에 GeoJSON 정보를 이용 국가 Polygon 적용.
 - [x] Globe 국가 타일에 Fetch 받아온 위험경보 매치
