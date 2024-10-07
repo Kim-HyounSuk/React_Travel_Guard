@@ -228,7 +228,7 @@ const Earth = React.memo(() => {
 				polygonSideColor={(polygon) =>
 					polygonColorWrapper(polygon as IGeoJsonFeature | null)
 				}
-				polygonStrokeColor={() => '#111'}
+				polygonStrokeColor={() => '#FFF'}
 				onPolygonHover={(polygon) => {
 					handlePolygonHover(polygon as IGeoJsonFeature | null);
 					createCountryInfo(polygon as IGeoJsonFeature | null);
