@@ -39,3 +39,26 @@ export const travelAlertInfo: {
 		text: ['출/입국 불가'],
 	},
 };
+
+export const TravelAlarm = [
+	{
+		text: '경보없음',
+		color: '#F5F5F5',
+	},
+	{
+		text: '여행유의',
+		color: '#AEC6CF',
+	},
+	{
+		text: '여행자제',
+		color: '#FDFD96',
+	},
+	{
+		text: '출국권고',
+		color: '#FF6961',
+	},
+	{
+		text: '여행금지',
+		color: '#636363',
+	},
+];

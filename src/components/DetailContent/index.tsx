@@ -8,6 +8,7 @@ import MapContent from './MapContent';
 import NoticesContent from './NoticesContent';
 import PermissionContent from './PermissionContent';
 import EmbassiesContent from './EmbassiesContent';
+import Alarm from './Alarm';
 
 interface IProps {
 	country: ICombinedData;
@@ -20,6 +21,7 @@ const DetailContent: React.FC<IProps> = React.memo(
 		return (
 			<Container>
 				<ContentTitle country={country} />
+				<Alarm data={country} />
 				<ContentWrap>
 					<MapContent country={country} />
 					<NoticesContent notices={notices} />
