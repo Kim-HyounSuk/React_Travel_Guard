@@ -136,31 +136,45 @@ const Earth = React.memo(() => {
 
 			if (newWidth <= 480) {
 				// mobile
-				zoomDistance = 800;
+				zoomDistance = 7.0;
 			} else if (newWidth <= 768) {
 				// tablet
-				zoomDistance = 600;
+				zoomDistance = 6.0;
 			} else if (newWidth <= 1024) {
 				// largeTablet
-				zoomDistance = 400;
+				zoomDistance = 3.5;
 			} else {
 				// desktop
-				zoomDistance = 300;
+				zoomDistance = 2.0;
 			}
 
-			// Globe의 카메라 Z축(줌) 설정
-			globeRef.current.camera().position.z = zoomDistance;
+			// 줌 거리만 조정
+			const currentPointOfView = globeRef.current.pointOfView();
+			globeRef.current.pointOfView(
+				{
+					...currentPointOfView,
+					altitude: zoomDistance,
+				},
+				0,
+			);
 		}
 	}, [globeRef]);
 
+	const updateFocus = useCallback(() => {
+		if (!globeRef.current) return;
+
+		globeRef.current.pointOfView({ lat: 37.5665, lng: 126.978 }, 2000);
+	}, []);
+
 	useLayoutEffect(() => {
+		updateFocus();
 		updateZoomLevel();
 
 		window.addEventListener('resize', updateZoomLevel);
 		return () => {
 			window.removeEventListener('resize', updateZoomLevel);
 		};
-	}, [updateZoomLevel]);
+	}, [updateZoomLevel, updateFocus]);
 
 	return (
 		<Container ref={containerRef} onMouseMove={(e) => handleMouseMove(e)}>
