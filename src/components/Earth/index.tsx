@@ -161,10 +161,31 @@ const Earth = React.memo(() => {
 	}, [globeRef]);
 
 	const updateFocus = useCallback(() => {
-		if (!globeRef.current) return;
+		if (!globeRef.current || !containerRef.current) return;
 
-		globeRef.current.pointOfView({ lat: 37.5665, lng: 126.978 }, 2000);
-	}, []);
+		// container 크기에 맞춰 줌 거리 계산
+		const newWidth = containerRef.current.offsetWidth;
+		let zoomDistance;
+
+		if (newWidth <= 480) {
+			// mobile
+			zoomDistance = 7.0;
+		} else if (newWidth <= 768) {
+			// tablet
+			zoomDistance = 6.0;
+		} else if (newWidth <= 1024) {
+			// largeTablet
+			zoomDistance = 3.5;
+		} else {
+			// desktop
+			zoomDistance = 2.0;
+		}
+
+		globeRef.current.pointOfView(
+			{ lat: 37.5665, lng: 126.978, altitude: zoomDistance },
+			2000,
+		);
+	}, [globeRef]);
 
 	useLayoutEffect(() => {
 		updateFocus();
